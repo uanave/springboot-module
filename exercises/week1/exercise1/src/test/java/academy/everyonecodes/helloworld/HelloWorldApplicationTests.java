@@ -1,10 +1,10 @@
-package academy.everyonecodes.demo2;
+package academy.everyonecodes.helloworld;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Demo2ApplicationTests {
+class HelloWorldApplicationTests {
 
 	@Test
 	void contextLoads() {

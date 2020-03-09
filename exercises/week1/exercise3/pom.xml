@@ -8,10 +8,10 @@
 		<version>2.2.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>academy.everyoncodes</groupId>
-	<artifactId>amazing-hello-world</artifactId>
+	<groupId>academy.everyonecodes</groupId>
+	<artifactId>round-up-counter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>amazing-hello-world</name>
+	<name>round-up-counter</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
