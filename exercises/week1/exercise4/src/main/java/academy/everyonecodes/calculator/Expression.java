@@ -2,7 +2,8 @@ package academy.everyonecodes.calculator;
 
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.Objects;
+
 public class Expression {
     private String symbol;
     private double term1;
@@ -36,5 +37,20 @@ public class Expression {
 
     public void setTerm2(double term2) {
         this.term2 = term2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Expression that = (Expression) o;
+        return Double.compare(that.term1, term1) == 0 &&
+                Double.compare(that.term2, term2) == 0 &&
+                Objects.equals(symbol, that.symbol);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(symbol, term1, term2);
     }
 }
