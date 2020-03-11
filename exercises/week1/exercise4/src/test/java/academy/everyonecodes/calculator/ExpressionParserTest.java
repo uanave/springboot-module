@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import static java.lang.Float.NaN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -20,14 +21,15 @@ class ExpressionParserTest {
     static Stream<Arguments> parameters() {
         Expression expression1 = new Expression("+", 1.0, 2.0);
         Expression expression2 = new Expression("/", 6.0, 2.0);
+        Expression expression3 = new Expression("/", 0.0, 2.0);
         return Stream.of(
                 Arguments.of(Optional.of(expression1), "1.0 + 2.0"),
+                Arguments.of(Optional.of(expression3), "0.0 / 2.0"),
                 Arguments.of(Optional.empty(), "1.0 2.0"),
                 Arguments.of(Optional.empty(), "aaaaa"),
                 Arguments.of(Optional.empty(), "a a a"),
                 Arguments.of(Optional.of(expression2), "6.0 / 2.0")
-
-                );
+        );
     }
 
     @ParameterizedTest

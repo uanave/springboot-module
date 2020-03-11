@@ -1,4 +1,4 @@
-package academy.everyonecodes.roundupcounter;
+package academy.everyonecodes.fizzbuzz;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -8,22 +8,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class UpDownIndicatorTest {
-
+class FizzBuzzTest {
     @Autowired
-    UpDownIndicator indicator;
+    FizzBuzz fizzBuzz;
 
     @ParameterizedTest
     @CsvSource({
-            "UP, 2.7",
-            "DOWN, 2.3",
-            "SAME, 0.5",
-            "DOWN, -1.7",
-            "UP, -1.3",
-            "SAME, 0.0"
+            "Fizz, 9",
+            "FizzBuzz, 15",
+            "Buzz, 5",
+            "'17', 17"
     })
-    void indicate(String expected, double input) {
-        String result = indicator.indicate(input);
+    void apply(String expected, int input) {
+        String result = fizzBuzz.apply(input);
         assertEquals(expected, result);
     }
 }

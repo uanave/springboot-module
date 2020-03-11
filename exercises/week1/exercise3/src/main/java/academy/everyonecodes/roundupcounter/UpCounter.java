@@ -14,8 +14,7 @@ public class UpCounter {
 
     public long count(List<Double> numbers) {
         return numbers.stream()
-                .map(e -> indicator.indicate(e))
-                .filter(e -> e.equals("UP"))
+                .filter(e -> indicator.indicate(e).equals("UP"))
                 .count();
     }
 }

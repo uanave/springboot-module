@@ -1,7 +1,5 @@
 package academy.everyonecodes.calculator;
 
-import org.springframework.stereotype.Service;
-
 import java.util.Objects;
 
 public class Expression {

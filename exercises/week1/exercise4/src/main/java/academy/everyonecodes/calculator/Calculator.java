@@ -15,28 +15,14 @@ public class Calculator {
         this.calculations = calculations;
     }
 
-    public ExpressionParser getParser() {
-        return parser;
-    }
-
-    public void setParser(ExpressionParser parser) {
-        this.parser = parser;
-    }
-
-    public List<Calculation> getCalculations() {
-        return calculations;
-    }
-
-    public void setCalculations(List<Calculation> calculations) {
-        this.calculations = calculations;
-    }
-
-    public Optional<Double> calculate(String expression) throws IllegalArgumentException {
-        Optional<Expression> oExpression = parser.parse(expression);
-        return oExpression.flatMap(value -> calculations.stream()
-                .filter(calculation -> calculation.matches(value))
-                .map(calculation -> calculation.calculate(value))
-                .findFirst());
+    public double calculate(String input) {
+        Optional<Expression> oExpression = parser.parse(input);
+        Expression expression = oExpression.orElseThrow(IllegalArgumentException::new);
+        return calculations.stream()
+                .filter(calculation -> calculation.matches(expression))
+                .map(calculation -> calculation.calculate(expression))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
 
