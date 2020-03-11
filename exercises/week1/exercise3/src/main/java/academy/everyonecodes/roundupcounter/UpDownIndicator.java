@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UpDownIndicator {
-    private Rounder rounder;
+    private final Rounder rounder;
 
     public UpDownIndicator(Rounder rounder) {
         this.rounder = rounder;

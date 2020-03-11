@@ -6,7 +6,7 @@ import java.util.List;
 
 @Service
 public class UpCounter {
-    private UpDownIndicator indicator;
+    private final UpDownIndicator indicator;
 
     public UpCounter(UpDownIndicator indicator) {
         this.indicator = indicator;

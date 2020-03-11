@@ -1,8 +1,8 @@
 package academy.everyoncodes.amazinggoodbyeworld;
 
 public class AmazingGoodbyeWorld {
-    private Goodbye goodbye;
-    private World world;
+    private final Goodbye goodbye;
+    private final World world;
 
     public AmazingGoodbyeWorld(Goodbye goodbye, World world) {
         this.goodbye = goodbye;

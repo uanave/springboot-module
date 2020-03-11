@@ -1,8 +1,8 @@
 package academy.everyonecodes.fizzbuzz;
 
 public class FizzBuzz {
-    private MultipleFinder multipleOfThree;
-    private MultipleFinder multipleOfFive;
+    private final MultipleFinder multipleOfThree;
+    private final MultipleFinder multipleOfFive;
 
     public FizzBuzz(MultipleFinder multipleOfThree, MultipleFinder multipleOfFive) {
         this.multipleOfThree = multipleOfThree;
@@ -19,6 +19,6 @@ public class FizzBuzz {
         if (multipleOfThree.isMultiple(number)) {
             return "Fizz";
         }
-        return number + "";
+        return String.valueOf(number);
     }
 }

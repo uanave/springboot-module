@@ -1,7 +1,7 @@
 package academy.everyonecodes.fizzbuzz;
 
 public class MultipleFinder {
-    private int multiple;
+    private final int multiple;
 
     public MultipleFinder(int multiple) {
         this.multiple = multiple;

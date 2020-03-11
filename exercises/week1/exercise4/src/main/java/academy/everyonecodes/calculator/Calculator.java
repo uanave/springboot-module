@@ -7,8 +7,8 @@ import java.util.Optional;
 
 @Service
 public class Calculator {
-    private ExpressionParser parser;
-    private List<Calculation> calculations;
+    private final ExpressionParser parser;
+    private final List<Calculation> calculations;
 
     public Calculator(ExpressionParser parser, List<Calculation> calculations) {
         this.parser = parser;
