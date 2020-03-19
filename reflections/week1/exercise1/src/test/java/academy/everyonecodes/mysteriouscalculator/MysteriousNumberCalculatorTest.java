@@ -17,7 +17,8 @@ class MysteriousNumberCalculatorTest {
     @CsvSource({
             "'The mysterious number is 4', 1",
             "'The mysterious number is 3', 0",
-            "'The mysterious number is 6', 3"
+            "'The mysterious number is 6', 3",
+            "'The mysterious number is 2', -1"
     })
     void calculate(String expected, int input) {
         String result = calculator.calculate(input);

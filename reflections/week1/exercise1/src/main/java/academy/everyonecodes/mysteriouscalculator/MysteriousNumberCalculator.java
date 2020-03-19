@@ -18,7 +18,7 @@ public class MysteriousNumberCalculator {
         int result = additions.stream()
                 .map(mysteriousAddition -> mysteriousAddition.apply(number))
                 .mapToInt(Integer::intValue)
-                .sum()-number;
+                .sum() - number;
         return formatter.format(result);
 
     }

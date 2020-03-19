@@ -7,11 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
 class MysteriousNumberFormatterTest {
 
-    @Autowired
-    MysteriousNumberFormatter formatter;
+    MysteriousNumberFormatter formatter = new MysteriousNumberFormatter();
 
     @ParameterizedTest
     @CsvSource({

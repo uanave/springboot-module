@@ -1,7 +1,7 @@
 package academy.everyonecodes.mysteriouscalculator;
 
 public class MysteriousAddition {
-    private int number;
+    private final int number;
 
     public MysteriousAddition(int number) {
         this.number = number;
