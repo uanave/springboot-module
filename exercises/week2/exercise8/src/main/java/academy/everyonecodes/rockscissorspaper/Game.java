@@ -4,11 +4,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Game {
-    private Human player1;
-    private Computer player2;
+    private Player player1;
+    private Player player2;
     private Judge judge;
 
-    public Game(Human player1, Computer player2, Judge judge) {
+    public Game(Player player1, Player player2, Judge judge) {
         this.player1 = player1;
         this.player2 = player2;
         this.judge = judge;

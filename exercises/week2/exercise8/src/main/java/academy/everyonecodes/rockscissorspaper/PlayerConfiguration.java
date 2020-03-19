@@ -9,12 +9,12 @@ import java.util.List;
 public class PlayerConfiguration {
 
     @Bean
-    Human player1(MoveUtils moveUtils) {
+    Player player1(MoveUtils moveUtils) {
         return new Human(moveUtils);
     }
 
     @Bean
-    Computer player2(List<Move> moves) {
+    Player player2(List<Move> moves) {
         return new Computer(moves);
     }
 }
