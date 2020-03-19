@@ -1,0 +1,10 @@
+basic:
+  naturalnumber: 369
+  decimalnumber: 1.618
+  message: My brain is only a receiver, in the Universe there is a core from which we obtain knowledge, strength and inspiration. - Nikola Tesla
+  choice: false
+  several:
+    naturalnumbers: 3, 6, 9
+    decimalnumbers: 3.14, 2.71, 3.359
+    words: Answer, to, the, Ultimate, Question, of, Life, the, Universe, and, Everything
+    choices: true, false, false, true
