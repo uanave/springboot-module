@@ -17,7 +17,7 @@ public class BillCalculator {
         return dishes.stream()
                 .mapToDouble(dish -> taxers.stream()
                         .filter(taxer -> taxer.matches(dish))
-                        .findAny().map(taxer -> taxer.tax(dish))
+                        .findFirst().map(taxer -> taxer.tax(dish))
                         .orElseGet(dish::getPrice))
                 .sum();
     }

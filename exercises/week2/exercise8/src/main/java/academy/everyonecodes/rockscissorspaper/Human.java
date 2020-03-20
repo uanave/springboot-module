@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Human implements Player {
     private final MoveUtils moveUtils;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public Human(MoveUtils moveUtils) {
         this.moveUtils = moveUtils;

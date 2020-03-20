@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class MoveUtils {
-    private List<Move> moves;
+    private final List<Move> moves;
 
     public MoveUtils(List<Move> moves) {
         this.moves = moves;

@@ -19,7 +19,8 @@ public class CreditCards {
             return issuers.stream()
                     .filter(issuer -> issuer.issues(creditCard))
                     .map(Issuer::getName)
-                    .findFirst().orElse("Not Supported");
+                    .findFirst()
+                    .orElse("Not Supported");
         }
         return "Invalid";
     }

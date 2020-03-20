@@ -15,4 +15,8 @@ public class TemplateConfiguration {
     List<Template> templates() {
         return templates;
     }
+
+    void setTemplates(List<Template> templates) {
+        this.templates = templates;
+    }
 }
