@@ -2,6 +2,7 @@ package academy.everyonecodes.restauranttaxer;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,32 +15,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FoodstuffTaxerTest {
 
     @Autowired
-    FoodstuffTaxer foodstuffTaxer;
-
-    static Stream<Arguments> parameters() {
-        return Stream.of(
-                Arguments.of(true, new RestaurantDish("potato soup", 5)),
-                Arguments.of(false, new RestaurantDish("pizza", 9))
-        );
-    }
-
-    static Stream<Arguments> arguments() {
-        return Stream.of(
-                Arguments.of(6.10, new RestaurantDish("potato soup", 5))
-        );
-    }
+    FoodstuffTaxer taxer;
 
     @ParameterizedTest
-    @MethodSource("parameters")
-    void matches(boolean expected, RestaurantDish input) {
-        boolean result = foodstuffTaxer.matches(input);
+    @CsvSource({
+            "false, ''",
+            "false, wrong-dish",
+            "true, tiramisu",
+    })
+    void matches(boolean expected, String name) {
+        RestaurantDish dish = new RestaurantDish(name, 1.0);
+
+        boolean result = taxer.matches(dish);
+
         assertEquals(expected, result);
     }
 
     @ParameterizedTest
-    @MethodSource("arguments")
-    void tax(double expected, RestaurantDish input) {
-        double result = foodstuffTaxer.tax(input);
+    @CsvSource({
+            "0.0, 0.0",
+            "1.10, 1.0",
+            "2.20, 2.0",
+    })
+    void tax(double expected, double price) {
+        RestaurantDish dish = new RestaurantDish("name", price);
+
+        double result = taxer.tax(dish);
+
         assertEquals(expected, result);
     }
 }

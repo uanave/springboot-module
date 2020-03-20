@@ -1,14 +1,8 @@
 secretagent:
   minPrice: 10
-  maxPrice: 9999
+  maxPrice: 99
   handshakes:
     - number: 2
-      move: thumb touches back
+      move: test1
     - number: 3
-      move: little finger grab
-    - number: 5
-      move: tickles over palm
-    - number: 6
-      move: bro knock
-    - number: 9
-      move: thousand knuckles
+      move: test2

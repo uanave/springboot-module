@@ -14,10 +14,6 @@ import java.util.stream.Collectors;
 public class BuildingReconstructionCandidateAnaliser {
     private List<Building> buildings;
 
-    public BuildingReconstructionCandidateAnaliser(List<Building> buildings) {
-        this.buildings = buildings;
-    }
-
     void setBuildings(List<Building> buildings) {
         this.buildings = buildings;
     }

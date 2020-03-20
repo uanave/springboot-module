@@ -19,7 +19,7 @@ class PriceToHandshakesTranslatorTest {
 
     static Stream<Arguments> parameters() {
         return Stream.of(
-                Arguments.of(List.of("thumb touches back", "little finger grab"), 23)
+                Arguments.of(List.of("test1", "test2"), 23)
 
         );
     }

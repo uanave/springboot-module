@@ -15,25 +15,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class BillCalculatorTest {
 
     @Autowired
-    BillCalculator billCalculator;
+    BillCalculator calculator;
 
     static Stream<Arguments> parameters() {
-        List<RestaurantDish> dishes = List.of(
-                new RestaurantDish("potato soup", 5),
-                new RestaurantDish("pizza", 9),
-                new RestaurantDish("soda", 2),
-                new RestaurantDish("wine", 3)
-        );
-
         return Stream.of(
-                Arguments.of(21.30, dishes)
+                Arguments.of(0.0, List.of()),
+                Arguments.of(1.0, List.of(new RestaurantDish("test", 1.0))),
+                Arguments.of(1.1, List.of(new RestaurantDish("tiramisu", 1.0))),
+                Arguments.of(1.2, List.of(new RestaurantDish("milkshake", 1.0))),
+                Arguments.of(2.3, List.of(
+                        new RestaurantDish("tiramisu", 1.0),
+                        new RestaurantDish("milkshake", 1.0))),
+                Arguments.of(3.3, List.of(
+                        new RestaurantDish("tiramisu", 1.0),
+                        new RestaurantDish("milkshake", 1.0),
+                        new RestaurantDish("test", 1.0)))
         );
     }
 
     @ParameterizedTest
     @MethodSource("parameters")
     void calculate(double expected, List<RestaurantDish> dishes) {
-        double result = billCalculator.calculate(dishes);
+        double result = calculator.calculate(dishes);
+
         assertEquals(expected, result);
     }
 }

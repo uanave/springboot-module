@@ -19,7 +19,11 @@ public abstract class Taxer {
         return tax;
     }
 
-    public abstract boolean matches(RestaurantDish dish);
+    public boolean matches(RestaurantDish dish) {
+        return dishes.contains(dish.getName());
+    }
+    public double tax(RestaurantDish dish) {
+        return dish.getPrice() * tax;
+    }
 
-    public abstract double tax(RestaurantDish dish);
 }

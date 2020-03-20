@@ -20,7 +20,8 @@ class HandshakeNumberToMoveTranslatorTest {
     static Stream<Arguments> parameters() {
         return Stream.of(
                 Arguments.of(Optional.empty(), 17),
-                Arguments.of(Optional.of("thumb touches back"), 2)
+                Arguments.of(Optional.of("test1"), 2),
+                Arguments.of(Optional.empty(), 0)
         );
     }
 

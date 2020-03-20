@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class PriceToHandshakesTranslator {
@@ -22,16 +23,21 @@ public class PriceToHandshakesTranslator {
         this.translator = translator;
     }
 
-    public List<String> translate(int price) {
-        if (price >= minPrice && price <= maxPrice) {
-            String priceToString = String.valueOf(price);
-            List<String> digits = List.of(priceToString.split(""));
-            return digits.stream()
-                    .map(e -> translator.translate(Integer.parseInt(e)))
-                    .filter(Optional::isPresent)
-                    .map(Optional::get)
-                    .collect(Collectors.toList());
+    public List<String> translate(int number) {
+        if (number < minPrice || number > maxPrice) {
+            return new ArrayList<>();
         }
-        return new ArrayList<>();
+        return translate(String.valueOf(number));
+    }
+
+    private List<String> translate(String number) {
+        String[] digits = number.split("");
+        return Stream.of(digits)
+                .map(Integer::valueOf)
+                .map(translator::translate)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+
     }
 }
