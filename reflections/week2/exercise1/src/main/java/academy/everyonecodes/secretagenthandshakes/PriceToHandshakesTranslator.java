@@ -1,40 +1,25 @@
 package academy.everyonecodes.secretagenthandshakes;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@ConfigurationProperties("secretagent")
 public class PriceToHandshakesTranslator {
     private int minPrice;
     private int maxPrice;
     private HandshakeNumberToMoveTranslator translator;
 
-    public PriceToHandshakesTranslator(int minPrice, int maxPrice) {
+    public PriceToHandshakesTranslator(@Value("${secretagent.minPrice}") int minPrice,
+                                       @Value("${secretagent.maxPrice}") int maxPrice,
+                                       HandshakeNumberToMoveTranslator translator) {
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
-    }
-
-    void setMinPrice(int minPrice) {
-        this.minPrice = minPrice;
-    }
-
-    void setMaxPrice(int maxPrice) {
-        this.maxPrice = maxPrice;
-    }
-
-    void setTranslator(HandshakeNumberToMoveTranslator translator) {
         this.translator = translator;
-    }
-
-    @Bean
-    HandshakeNumberToMoveTranslator translator() {
-        return translator;
     }
 
     public List<String> translate(int price) {
@@ -47,6 +32,6 @@ public class PriceToHandshakesTranslator {
                     .map(Optional::get)
                     .collect(Collectors.toList());
         }
-        return List.of();
+        return new ArrayList<>();
     }
 }

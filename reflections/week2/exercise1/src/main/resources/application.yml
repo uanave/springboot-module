@@ -1,4 +1,6 @@
 secretagent:
+  minPrice: 10
+  maxPrice: 9999
   handshakes:
     - number: 2
       move: thumb touches back
@@ -10,6 +12,3 @@ secretagent:
       move: bro knock
     - number: 9
       move: thousand knuckles
-  minPrice: 10
-  maxPrice: 9999
-

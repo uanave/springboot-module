@@ -6,19 +6,11 @@ public class Handshake {
     private int number;
     private String move;
 
-    public Handshake(int number, String move) {
-        this.number = number;
-        this.move = move;
-    }
-
-    public Handshake() {
-    }
-
     public int getNumber() {
         return number;
     }
 
-    void setNumber(int number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -26,7 +18,7 @@ public class Handshake {
         return move;
     }
 
-    void setMove(String move) {
+    public void setMove(String move) {
         this.move = move;
     }
 
