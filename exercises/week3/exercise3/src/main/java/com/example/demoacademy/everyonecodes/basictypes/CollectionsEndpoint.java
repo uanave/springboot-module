@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/collections")
@@ -18,7 +19,7 @@ public class CollectionsEndpoint {
     }
 
     @GetMapping("/numbers")
-    List<Integer> getNumbers() {
+    Set<Integer> getNumbers() {
         return Set.of(1, 2, 3);
     }
 
