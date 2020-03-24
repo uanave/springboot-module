@@ -19,7 +19,7 @@ public class CollectionsEndpoint {
 
     @GetMapping("/numbers")
     List<Integer> getNumbers() {
-        return List.of(1, 2, 3);
+        return Set.of(1, 2, 3);
     }
 
     @GetMapping("/choices")

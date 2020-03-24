@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class GreetingEndpoint {
+    private final String greeting;
+
+    public GreetingEndpoint(@Value("${greeting}") String greeting) {
+        this.greeting = greeting;
+    }
+
     @GetMapping
-    String getMessage(@Value("${greeting}") String greeting) {
+    String getMessage() {
         return greeting;
     }
 }
