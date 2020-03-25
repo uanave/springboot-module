@@ -13,6 +13,6 @@ public class AmazingHelloWorld {
     }
 
     public String get() {
-        return this.hello.get() + " " + world.get();
+        return hello.get() + " " + world.get();
     }
 }
