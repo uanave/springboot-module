@@ -29,8 +29,9 @@ class DeveloperServiceTest {
                 Arguments.of(List.of(), "Java C++"),
                 Arguments.of(List.of(
                         new Developer("Seth", Set.of("Javascript", "CSS", "HTML")),
-                        new Developer("Tom", Set.of("Kotlin", "Python", "Javascript"))
-                ), "Javascript")
+                        new Developer("Tom", Set.of("Kotlin", "Python", "Javascript"))), "Javascript"),
+                Arguments.of(List.of(
+                        new Developer("Sarah", Set.of("Java", "Spring-Boot"))), "Spring-Boot Java")
         );
     }
 
@@ -40,7 +41,7 @@ class DeveloperServiceTest {
 
         List<Developer> expected = List.of(
                 new Developer("Seth", Set.of("Javascript", "CSS", "HTML")),
-                new Developer("Sarah", Set.of("Java", "Spring Boot")),
+                new Developer("Sarah", Set.of("Java", "Spring-Boot")),
                 new Developer("Sonia", Set.of("Python", "HTML", "CSS")),
                 new Developer("Tom", Set.of("Kotlin", "Python", "Javascript"))
         );
