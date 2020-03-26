@@ -32,7 +32,9 @@ class MarathonServiceTest {
         marathonService.addRunner(runner1);
         marathonService.addRunner(runner2);
         marathonService.addRunner(runner3);
+
         Optional<Runner> result = marathonService.findWinner();
+
         Runner expected = runner3;
         assertEquals(expected.hashCode(), result.hashCode());
     }
@@ -41,7 +43,9 @@ class MarathonServiceTest {
     void getRunners() {
         marathonService.addRunner(runner1);
         marathonService.addRunner(runner2);
+
         Set<Runner> result = marathonService.getRunners();
+
         Set<Runner> expected = Set.of(runner1, runner2);
         assertEquals(expected, result);
     }
