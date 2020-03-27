@@ -1,21 +1,27 @@
 package academy.everyonecodes.drhouseadmission;
 
+import academy.everyonecodes.drhouseadmission.domain.Patient;
+import academy.everyonecodes.drhouseadmission.logic.Admission;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashMap;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@SpringBootTest
 class AdmissionTest {
-    Admission admission = new Admission(new UUIDProvider());
+
+    @Autowired
+    Admission admission;
 
     @Test
-    void admitPatient() {
-        Patient mary = new Patient("Mary", "", List.of("headache"));
-        Patient result = admission.admit(mary);
-        HashMap<String, String> expected = admission.getUuidProvider().getCacheSnapshot();
-        String id = expected.get("Mary");
-        assertEquals(result.getUuid(), id);
+    void admit() {
+        Patient patient = new Patient("test", "test");
+        assertNull(patient.getUuid());
+
+        Patient admitted = admission.admit(patient);
+        assertNotNull(admitted.getUuid());
+
     }
 }

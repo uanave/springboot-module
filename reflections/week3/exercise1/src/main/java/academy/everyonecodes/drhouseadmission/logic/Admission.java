@@ -1,5 +1,6 @@
-package academy.everyonecodes.drhouseadmission;
+package academy.everyonecodes.drhouseadmission.logic;
 
+import academy.everyonecodes.drhouseadmission.domain.Patient;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,9 +14,5 @@ public class Admission {
     public Patient admit(Patient patient) {
         uuidProvider.provideUUID(patient);
         return patient;
-    }
-
-    public UUIDProvider getUuidProvider() {
-        return uuidProvider;
     }
 }

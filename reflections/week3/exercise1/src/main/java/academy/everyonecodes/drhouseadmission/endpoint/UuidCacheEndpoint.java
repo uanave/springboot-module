@@ -1,17 +1,17 @@
-package academy.everyonecodes.drhouseadmission;
+package academy.everyonecodes.drhouseadmission.endpoint;
 
+import academy.everyonecodes.drhouseadmission.logic.UUIDProvider;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/uuids")
 public class UuidCacheEndpoint {
-    private UUIDProvider uuidProvider;
+    private final UUIDProvider uuidProvider;
 
     public UuidCacheEndpoint(UUIDProvider uuidProvider) {
         this.uuidProvider = uuidProvider;
@@ -24,7 +24,7 @@ public class UuidCacheEndpoint {
 
     @GetMapping("/{patientName}")
     String getId(@PathVariable String patientName) {
-        Optional<String> name = uuidProvider.findUUID(patientName);
-        return name.orElse(null);
+        return uuidProvider.findUUID(patientName)
+                .orElse(null);
     }
 }

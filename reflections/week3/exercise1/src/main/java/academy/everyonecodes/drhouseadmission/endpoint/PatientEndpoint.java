@@ -1,12 +1,14 @@
-package academy.everyonecodes.drhouseadmission;
+package academy.everyonecodes.drhouseadmission.endpoint;
 
+import academy.everyonecodes.drhouseadmission.domain.Patient;
+import academy.everyonecodes.drhouseadmission.logic.Admission;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/patients")
 public class PatientEndpoint {
     private Admission admission;
 
@@ -14,9 +16,8 @@ public class PatientEndpoint {
         this.admission = admission;
     }
 
-    @PostMapping("/patients")
+    @PostMapping()
     Patient post(@RequestBody Patient patient) {
-        admission.admit(patient);
-        return patient;
+        return admission.admit(patient);
     }
 }
