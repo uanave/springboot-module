@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/developers")
 public class DeveloperEndpoint {
-    private DeveloperService developerService;
+    private final DeveloperService developerService;
 
     public DeveloperEndpoint(DeveloperService developerService) {
         this.developerService = developerService;

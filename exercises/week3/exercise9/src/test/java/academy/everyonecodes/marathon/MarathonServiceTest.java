@@ -10,8 +10,8 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MarathonServiceTest {
+    MarathonService marathonService = new MarathonService();
     private Set<Runner> runners = new HashSet<>();
-    MarathonService marathonService = new MarathonService(runners);
     private Runner runner1 = new Runner("John", Duration.ofSeconds(130));
     private Runner runner2 = new Runner("Emil", Duration.ofSeconds(120));
     private Runner runner3 = new Runner("Dan", Duration.ofMillis(118500));

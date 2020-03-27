@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/")
 public class MarcoPoloEndpoint {
 
-    @GetMapping
+    @GetMapping("/{text}")
     String getText(@PathVariable String text) {
         if (text.equals("Marco")) {
             return "Polo";

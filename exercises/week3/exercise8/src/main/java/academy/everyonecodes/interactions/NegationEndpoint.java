@@ -11,6 +11,6 @@ public class NegationEndpoint {
 
     @PostMapping
     boolean post(@RequestBody boolean choice) {
-        return choice;
+        return !choice;
     }
 }

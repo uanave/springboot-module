@@ -10,14 +10,6 @@ import java.util.Set;
 public class ColorsEndpoint {
     private Set<String> colors = new HashSet<>();
 
-    public ColorsEndpoint(Set<String> colors) {
-        this.colors = colors;
-    }
-
-    public void setColors(Set<String> colors) {
-        this.colors = colors;
-    }
-
     @GetMapping
     Set<String> getColors() {
         return colors;
@@ -25,14 +17,10 @@ public class ColorsEndpoint {
 
     @GetMapping("/{name}")
     String get(@PathVariable String name) {
-//        colors.stream()
-//                .filter(color -> color.equals(name))
-//                .findFirst()
-//                .orElse(null);
-        if (colors.contains(name)) {
-            return name;
-        }
-        return "The color is not available in the app";
+        return colors.stream()
+                .filter(color -> color.equalsIgnoreCase(name))
+                .findFirst()
+                .orElse("The color is not available in the app");
     }
 
     @PostMapping
