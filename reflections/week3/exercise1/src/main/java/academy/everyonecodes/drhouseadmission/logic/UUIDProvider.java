@@ -12,10 +12,11 @@ import java.util.UUID;
 public class UUIDProvider {
     private final Map<String, String> cache = new HashMap<>();
 
-    public void provideUUID(Patient patient) {
-        String name = patient.getName();
+    public void provideUUID(Patient newPatient) {
+        String name = newPatient.getName();
         String uuid = cache.getOrDefault(name, UUID.randomUUID().toString());
-        patient.setUuid(uuid);
+        //getOrDefault - ia-l daca e daca nu face random;
+        newPatient.setUuid(uuid);
         cache.putIfAbsent(name, uuid);
     }
 
