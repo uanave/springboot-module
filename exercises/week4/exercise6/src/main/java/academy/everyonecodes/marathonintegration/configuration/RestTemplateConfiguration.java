@@ -1,4 +1,4 @@
-package academy.everyonecodes.marco;
+package academy.everyonecodes.marathonintegration.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

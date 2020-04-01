@@ -1,5 +1,6 @@
 package academy.everyonecodes.complexformula;
 
+import academy.everyonecodes.complexformula.logic.ComplexFormula;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

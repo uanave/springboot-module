@@ -1,5 +1,6 @@
-package academy.everyonecodes.complexformula;
+package academy.everyonecodes.complexformula.logic;
 
+import academy.everyonecodes.complexformula.communication.client.FormulaClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

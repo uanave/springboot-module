@@ -1,6 +1,8 @@
 package academy.everyonecodes.complexformula;
 
 
+import academy.everyonecodes.complexformula.communication.client.FormulaClient;
+import academy.everyonecodes.complexformula.logic.ComplexFormula;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,13 @@ class ComplexFormulaTest {
 
     @Test
     void applyFormula() {
-        Mockito.when(formulaClient.apply(2)).thenReturn(4);
+        int input = 2;
+        int expected = 4;
+        Mockito.when(formulaClient.apply(input)).thenReturn(expected);
 
-        int result = complexFormula.applyFormula(2);
+        int result = complexFormula.applyFormula(input);
 
-        assertEquals(4, result);
-        Mockito.verify(formulaClient).apply(2);
+        assertEquals(expected, result);
+        Mockito.verify(formulaClient).apply(input);
     }
 }

@@ -1,5 +1,6 @@
-package academy.everyonecodes.complexformula;
+package academy.everyonecodes.complexformula.communication.endpoint;
 
+import academy.everyonecodes.complexformula.logic.ComplexFormula;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

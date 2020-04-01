@@ -1,5 +1,7 @@
 package academy.everyonecodes.marathonintegration;
 
+import academy.everyonecodes.marathonintegration.communication.client.MarathonClient;
+import academy.everyonecodes.marathonintegration.domain.Runner;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,7 @@ class MarathonClientTest {
         Mockito.when(restTemplate.postForObject(url, runner1, Runner.class)).thenReturn(runner1);
 
         marathonClient.postRunner(runner1);
+        marathonClient.postRunner(runner2);
 
         Mockito.verify(restTemplate).postForObject(url + "/runners", runner1, Runner.class);
     }

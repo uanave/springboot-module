@@ -1,5 +1,7 @@
 package academy.everyonecodes.marathonintegration;
 
+import academy.everyonecodes.marathonintegration.domain.TestResult;
+import academy.everyonecodes.marathonintegration.logic.MarathonTester;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

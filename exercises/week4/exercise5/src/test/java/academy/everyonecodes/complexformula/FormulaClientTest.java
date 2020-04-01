@@ -1,5 +1,6 @@
 package academy.everyonecodes.complexformula;
 
+import academy.everyonecodes.complexformula.communication.client.FormulaClient;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,11 @@ class FormulaClientTest {
     @Test
     void post() {
         int number = 22;
-        url = url + "/formula";
 
-        Mockito.when(restTemplate.postForObject(url, number, Integer.class)).thenReturn(44);
+        Mockito.when(restTemplate.postForObject(url + "/formula", number, Integer.class)).thenReturn(44);
 
-        formulaClient.apply(22);
+        formulaClient.apply(number);
 
-        Mockito.verify(restTemplate).postForObject(url, number, Integer.class);
+        Mockito.verify(restTemplate).postForObject(url + "/formula", number, Integer.class);
     }
 }

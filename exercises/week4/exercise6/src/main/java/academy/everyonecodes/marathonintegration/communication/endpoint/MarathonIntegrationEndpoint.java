@@ -1,5 +1,7 @@
-package academy.everyonecodes.marathonintegration;
+package academy.everyonecodes.marathonintegration.communication.endpoint;
 
+import academy.everyonecodes.marathonintegration.logic.MarathonTester;
+import academy.everyonecodes.marathonintegration.domain.TestResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

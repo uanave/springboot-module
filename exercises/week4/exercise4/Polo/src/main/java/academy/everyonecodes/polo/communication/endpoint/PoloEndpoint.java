@@ -1,5 +1,6 @@
-package academy.everyonecodes.polo;
+package academy.everyonecodes.polo.communication.endpoint;
 
+import academy.everyonecodes.polo.domain.Polo;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

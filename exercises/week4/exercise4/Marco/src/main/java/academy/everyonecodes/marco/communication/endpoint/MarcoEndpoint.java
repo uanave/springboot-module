@@ -1,5 +1,6 @@
-package academy.everyonecodes.marco;
+package academy.everyonecodes.marco.communication.endpoint;
 
+import academy.everyonecodes.marco.communication.client.PoloClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

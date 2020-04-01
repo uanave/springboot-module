@@ -1,4 +1,4 @@
-package academy.everyonecodes.marco;
+package academy.everyonecodes.marco.communication.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

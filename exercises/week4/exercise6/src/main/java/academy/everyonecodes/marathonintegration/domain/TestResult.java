@@ -1,4 +1,4 @@
-package academy.everyonecodes.marathonintegration;
+package academy.everyonecodes.marathonintegration.domain;
 
 import java.util.Objects;
 

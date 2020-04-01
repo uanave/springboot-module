@@ -1,5 +1,6 @@
-package academy.everyonecodes.marathonintegration;
+package academy.everyonecodes.marathonintegration.configuration;
 
+import academy.everyonecodes.marathonintegration.domain.Runner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

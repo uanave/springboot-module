@@ -1,4 +1,4 @@
-package academy.everyonecodes.polo;
+package academy.everyonecodes.polo.domain;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package academy.everyonecodes.complexformula;
+package academy.everyonecodes.complexformula.communication.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

@@ -1,8 +1,11 @@
-package academy.everyonecodes.marathonintegration;
+package academy.everyonecodes.marathonintegration.communication.client;
 
+import academy.everyonecodes.marathonintegration.domain.Runner;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Optional;
 
 @Controller
 public class MarathonClient {
@@ -15,8 +18,8 @@ public class MarathonClient {
         this.url = url;
     }
 
-    public Runner getWinner() {
-        return restTemplate.getForObject(url + "/runners/winner", Runner.class);
+    public Optional<Runner> getWinner() {
+        return Optional.ofNullable(restTemplate.getForObject(url + "/runners/winner", Runner.class));
     }
 
     public void postRunner(Runner runner) {

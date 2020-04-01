@@ -25,11 +25,8 @@ class DorothyTest {
     @Test
     void interact() {
 
-        Mockito.when(restTemplate.getForObject(url, String.class))
-                .thenReturn("http://localhost:9002/home");
-        Mockito.when(restTemplate.getForObject("http://localhost:9002/home", String.class))
-                .thenReturn("Kansas");
-
+        Mockito.when(restTemplate.getForObject(url, String.class)).thenReturn("http://localhost:9002/home");
+        Mockito.when(restTemplate.getForObject("http://localhost:9002/home", String.class)).thenReturn("Kansas");
 
         String result = dorothy.interact();
         String expected = "My home is Kansas";

@@ -1,4 +1,4 @@
-package academy.everyonecodes.complexformula;
+package academy.everyonecodes.marco.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,6 @@
 package academy.everyonecodes.marco;
 
+import academy.everyonecodes.marco.communication.client.PoloClient;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
