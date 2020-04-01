@@ -1,0 +1,4 @@
+server:
+  port: 9000
+interactions:
+  wizard: http://localhost:9001/wizard
