@@ -1,6 +1,6 @@
 package academy.everyonecodes.home;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/home")
 public class HomeEndpoint {
 
-    @PostMapping
-    String getMessage() {
+    @GetMapping
+    String get() {
         return "Kansas";
     }
 }

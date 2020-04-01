@@ -15,6 +15,6 @@ public class DorothyEndpoint {
 
     @GetMapping
     String getResponse() {
-        return "My home is " + dorothy.interract();
+        return dorothy.interact();
     }
 }

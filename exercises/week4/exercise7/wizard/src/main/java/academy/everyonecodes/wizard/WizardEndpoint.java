@@ -1,6 +1,6 @@
 package academy.everyonecodes.wizard;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/wizard")
 public class WizardEndpoint {
 
-    @PostMapping
-    String post() {
+    @GetMapping
+    String get() {
         return "http://localhost:9002/home";
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.client.RestTemplate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @SpringBootTest(webEnvironment = NONE)
@@ -18,12 +19,22 @@ class DorothyTest {
 
     @MockBean
     RestTemplate restTemplate;
-    @Value("${interactions.wizard}")
-    String urlWizard;
+    @Value("${wizard.url}")
+    String url;
 
     @Test
-    void interract() {
-        dorothy.interract();
-        Mockito.verify(restTemplate).postForObject(urlWizard, null, String.class);
+    void interact() {
+
+        Mockito.when(restTemplate.getForObject(url, String.class))
+                .thenReturn("http://localhost:9002/home");
+        Mockito.when(restTemplate.getForObject("http://localhost:9002/home", String.class))
+                .thenReturn("Kansas");
+
+
+        String result = dorothy.interact();
+        String expected = "My home is Kansas";
+
+        assertEquals(expected, result);
+        Mockito.verify(restTemplate).getForObject(url, String.class);
     }
 }

@@ -1,4 +1,4 @@
-package academy.everyonecodes.dorothy;
+package academy.everyonecodes.marathonintegration;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -10,19 +10,20 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class DorothyEndpointTest {
+class MarathonIntegrationEndpointTest {
 
     @Autowired
     TestRestTemplate restTemplate;
 
     @MockBean
-    Dorothy dorothy;
+    MarathonTester marathonTester;
 
     @Test
-    void getResponse() {
-        String url = "/dorothy";
+    void get() {
+        String url = "/marathon/integration";
 
-        restTemplate.getForObject(url, String.class);
-        Mockito.verify(dorothy).interact();
+        restTemplate.getForObject(url, TestResult.class);
+
+        Mockito.verify(marathonTester).integrate();
     }
 }

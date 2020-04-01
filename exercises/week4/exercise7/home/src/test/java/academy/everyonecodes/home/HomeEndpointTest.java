@@ -15,14 +15,10 @@ class HomeEndpointTest {
     @Autowired
     TestRestTemplate restTemplate;
 
-    @MockBean
-    HomeEndpoint homeEndpoint;
-
-    String url = "/home";
 
     @Test
     void getMessage() {
-        restTemplate.postForObject(url, null, String.class);
-        Mockito.verify(homeEndpoint).getMessage();
+        String url = "/home";
+        restTemplate.getForObject(url, String.class);
     }
 }

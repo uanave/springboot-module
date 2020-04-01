@@ -21,13 +21,11 @@ class ComplexFormulaTest {
 
     @Test
     void applyFormula() {
-        int number = 2;
-        int expected = 4;
-
         Mockito.when(formulaClient.apply(2)).thenReturn(4);
-        int result = complexFormula.applyFormula(number);
 
-        assertEquals(expected, result);
-        Mockito.verify(formulaClient).apply(number);
+        int result = complexFormula.applyFormula(2);
+
+        assertEquals(4, result);
+        Mockito.verify(formulaClient).apply(2);
     }
 }

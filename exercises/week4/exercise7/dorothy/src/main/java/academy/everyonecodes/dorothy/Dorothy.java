@@ -10,15 +10,13 @@ public class Dorothy {
     private final String urlWizard;
 
     public Dorothy(RestTemplate restTemplate,
-                   @Value("${interactions.wizard}") String urlWizard) {
+                   @Value("${wizard.url}") String urlWizard) {
         this.restTemplate = restTemplate;
         this.urlWizard = urlWizard;
     }
 
-    public String interract() {
-        String homeUrl = restTemplate.postForObject(urlWizard, null, String.class);
-        return restTemplate.postForObject(homeUrl, null, String.class);
-
+    public String interact() {
+        String homeUrl = restTemplate.getForObject(urlWizard, String.class);
+        return "My home is " + restTemplate.getForObject(homeUrl, String.class);
     }
-
 }

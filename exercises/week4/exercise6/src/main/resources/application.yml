@@ -1,2 +1,4 @@
 server:
   port: 8501
+marathon:
+  url: http://localhost:8500
