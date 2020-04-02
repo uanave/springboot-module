@@ -1,0 +1,4 @@
+server:
+  port: 9000
+url:
+  cups: http://localhost:9001/cup, http://localhost:9002/cup, http://localhost:9003/cup
