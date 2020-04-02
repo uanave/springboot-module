@@ -12,13 +12,13 @@ public class RunnerConfiguration {
 
     @Bean
     Runner winner() {
-        return new Runner("Ion", Duration.ofMinutes(3));
+        return new Runner("John", Duration.ofMinutes(3));
     }
 
     @Bean
     List<Runner> runners() {
-        Runner runner1 = new Runner("Ion", Duration.ofMinutes(3));
-        Runner runner2 = new Runner("Vasile", Duration.ofMinutes(7));
+        Runner runner1 = new Runner("John", Duration.ofMinutes(3));
+        Runner runner2 = new Runner("Tom", Duration.ofMinutes(7));
         return List.of(runner1, runner2);
     }
 }
