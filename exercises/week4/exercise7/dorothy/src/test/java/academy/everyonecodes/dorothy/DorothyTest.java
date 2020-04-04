@@ -9,6 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @SpringBootTest(webEnvironment = NONE)
@@ -24,14 +25,17 @@ class DorothyTest {
 
     @Test
     void interact() {
+        String homeUrl = "home";
+        String homeMessage = "homeMessage";
 
-        Mockito.when(restTemplate.getForObject(url, String.class)).thenReturn("http://localhost:9002/home");
-        Mockito.when(restTemplate.getForObject("http://localhost:9002/home", String.class)).thenReturn("Kansas");
+        when(restTemplate.getForObject(url, String.class)).thenReturn(homeUrl);
+
+        when(restTemplate.getForObject(homeUrl, String.class)).thenReturn(homeMessage);
 
         String result = dorothy.interact();
-        String expected = "My home is Kansas";
+
+        String expected = "My home is " + homeMessage;
 
         assertEquals(expected, result);
-        Mockito.verify(restTemplate).getForObject(url, String.class);
     }
 }

@@ -26,8 +26,6 @@ class FormulaClientTest {
     void post() {
         int number = 22;
 
-        Mockito.when(restTemplate.postForObject(url + "/formula", number, Integer.class)).thenReturn(44);
-
         formulaClient.apply(number);
 
         Mockito.verify(restTemplate).postForObject(url + "/formula", number, Integer.class);

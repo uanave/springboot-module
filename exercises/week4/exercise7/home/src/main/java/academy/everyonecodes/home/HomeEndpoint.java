@@ -8,6 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/home")
 public class HomeEndpoint {
 
+
+/*    instead of hardcoding "Kansas", take it from the properties;
+    private final String message;
+
+    public HomeEndpoint(@Value("${message}") String message) {
+        this.message = message;
+    }
+
+ */
+
     @GetMapping
     String get() {
         return "Kansas";

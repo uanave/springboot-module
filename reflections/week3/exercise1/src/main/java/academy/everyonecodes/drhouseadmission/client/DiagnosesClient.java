@@ -16,7 +16,7 @@ public class DiagnosesClient {
         this.url = url;
     }
 
-    public Patient send(Patient patient) {
-        return restTemplate.postForObject(url + "/", patient, Patient.class);
+    public void send(Patient patient) {
+        restTemplate.postForObject(url, patient, Void.class);
     }
 }

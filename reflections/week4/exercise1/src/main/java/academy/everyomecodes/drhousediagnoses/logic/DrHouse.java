@@ -14,13 +14,12 @@ public class DrHouse {
         this.diagnoses = diagnoses;
     }
 
-    public Patient diagnose(Patient patient) {
+    public void diagnose(Patient patient) {
         System.out.println(diagnoses);
         String diagnoseName = diagnoses.stream()
                 .filter(diagnosis -> diagnosis.getSymptoms().equals(patient.getSymptoms()))
                 .map(Diagnosis::getName)
                 .findFirst().orElse("lupus");
         patient.setDiagnosis(diagnoseName);
-        return patient;
     }
 }
