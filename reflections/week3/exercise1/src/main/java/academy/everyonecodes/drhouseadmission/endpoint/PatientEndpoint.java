@@ -18,7 +18,6 @@ public class PatientEndpoint {
 
     @PostMapping()
     Patient post(@RequestBody Patient patient) {
-        Patient admittedPatient = admission.admit(patient);
-        return admittedPatient;
+        return admission.admit(patient);
     }
 }

@@ -10,7 +10,11 @@ import java.util.UUID;
 
 @Service
 public class UUIDProvider {
-    private final Map<String, String> cache = new HashMap<>();
+    private final Map<String, String> cache;
+
+    public UUIDProvider(Map<String, String> cache) {
+        this.cache = cache;
+    }
 
     public void provideUUID(Patient newPatient) {
         String name = newPatient.getName();
@@ -20,11 +24,11 @@ public class UUIDProvider {
         cache.putIfAbsent(name, uuid);
     }
 
-    public HashMap<String, String> getCacheSnapshot() {
+    public Map<String, String> getCacheSnapshot() {
         return new HashMap<>(cache);
     }
 
     public Optional<String> findUUID(String patientName) {
-        return Optional.of(cache.get(patientName));
+        return Optional.ofNullable(cache.getOrDefault(patientName, null));
     }
 }

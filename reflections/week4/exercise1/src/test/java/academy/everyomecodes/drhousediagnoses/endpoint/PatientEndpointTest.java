@@ -3,12 +3,12 @@ package academy.everyomecodes.drhousediagnoses.endpoint;
 import academy.everyomecodes.drhousediagnoses.domain.Patient;
 import academy.everyomecodes.drhousediagnoses.logic.DiagnosisRoom;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
+import static org.mockito.Mockito.verify;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -26,7 +26,9 @@ class PatientEndpointTest {
     @Test
     void post() {
         String url = "/patients";
+
         restTemplate.postForObject(url, patient, Patient.class);
-        Mockito.verify(diagnosisRoom).diagnose(patient);
+
+        verify(diagnosisRoom).diagnose(patient);
     }
 }

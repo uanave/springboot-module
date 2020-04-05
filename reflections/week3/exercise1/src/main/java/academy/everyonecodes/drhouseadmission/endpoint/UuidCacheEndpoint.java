@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/uuids")
@@ -18,7 +19,7 @@ public class UuidCacheEndpoint {
     }
 
     @GetMapping
-    HashMap<String, String> getCached() {
+    Map<String, String> getCached() {
         return uuidProvider.getCacheSnapshot();
     }
 
