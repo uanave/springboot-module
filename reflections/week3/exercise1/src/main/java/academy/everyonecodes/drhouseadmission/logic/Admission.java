@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Admission {
-    private UUIDProvider uuidProvider;
-    private DiagnosesClient diagnosesClient;
+    private final UUIDProvider uuidProvider;
+    private final DiagnosesClient diagnosesClient;
 
     public Admission(UUIDProvider uuidProvider, DiagnosesClient diagnosesClient) {
         this.uuidProvider = uuidProvider;

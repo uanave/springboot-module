@@ -30,6 +30,7 @@ public class Diagnosis {
         this.symptoms = symptoms;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

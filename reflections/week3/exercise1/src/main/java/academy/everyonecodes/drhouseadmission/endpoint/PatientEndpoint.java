@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/patients")
 public class PatientEndpoint {
-    private Admission admission;
+    private final Admission admission;
 
     public PatientEndpoint(Admission admission) {
         this.admission = admission;
