@@ -15,7 +15,7 @@ public class MarcoEndpoint {
         this.poloClient = poloClient;
     }
 
-    @GetMapping("/message/{message}")
+    @GetMapping("/{message}")
     String get(@PathVariable String message) {
         return poloClient.post(message);
     }

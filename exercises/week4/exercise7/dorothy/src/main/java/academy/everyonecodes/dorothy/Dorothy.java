@@ -17,6 +17,7 @@ public class Dorothy {
 
     public String interact() {
         String homeUrl = restTemplate.getForObject(urlWizard, String.class);
-        return "My home is " + restTemplate.getForObject(homeUrl, String.class);
+        String homeLocation = restTemplate.getForObject(homeUrl, String.class);
+        return "My home is " + homeLocation;
     }
 }

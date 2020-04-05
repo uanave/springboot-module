@@ -14,7 +14,7 @@ public class ComplexFormula {
         this.formulaClient = formulaClient;
     }
 
-    public int applyFormula(int number) {
+    public int applyFormula(Integer number) {
         List<String> digits = List.of(String.valueOf(number).split(""));
         String result = digits.stream()
                 .map(digit -> String.valueOf(formulaClient.apply(Integer.parseInt(digit))))

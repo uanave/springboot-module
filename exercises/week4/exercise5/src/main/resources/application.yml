@@ -1,4 +1,4 @@
 interactions:
-  url: http://localhost:8080
+  url: http://localhost:8080/formula
 server:
   port: 8081

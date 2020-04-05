@@ -9,8 +9,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.client.RestTemplate;
 
 import static org.mockito.Mockito.verify;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(webEnvironment = NONE)
 class FormulaClientTest {
 
     @Autowired
@@ -29,6 +30,6 @@ class FormulaClientTest {
 
         formulaClient.apply(number);
 
-        verify(restTemplate).postForObject(url + "/formula", number, Integer.class);
+        verify(restTemplate).postForObject(url, number, Integer.class);
     }
 }
