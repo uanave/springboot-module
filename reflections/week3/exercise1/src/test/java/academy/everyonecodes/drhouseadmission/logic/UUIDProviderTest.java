@@ -1,7 +1,6 @@
-package academy.everyonecodes.drhouseadmission;
+package academy.everyonecodes.drhouseadmission.logic;
 
 import academy.everyonecodes.drhouseadmission.domain.Patient;
-import academy.everyonecodes.drhouseadmission.logic.UUIDProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
