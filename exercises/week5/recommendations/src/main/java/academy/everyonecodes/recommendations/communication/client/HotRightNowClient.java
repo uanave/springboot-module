@@ -8,11 +8,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
-//@Order(2)
+@Order(1)
 public class HotRightNowClient {
     private final RestTemplate restTemplate;
     private final String urlHot;

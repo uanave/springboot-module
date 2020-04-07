@@ -19,7 +19,7 @@ class MovieStoreTest {
 
     @Test
     void getMovies() {
-        List<Movie> result = movieStore.getMovies();
+        List<Movie> result = movieStore.getHotMovies();
         List<Movie> expected = List.of(
                 new Movie("test1", "test1"),
                 new Movie("test2", "test2")

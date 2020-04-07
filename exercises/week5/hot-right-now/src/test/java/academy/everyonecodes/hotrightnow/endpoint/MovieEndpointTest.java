@@ -30,6 +30,6 @@ class MovieEndpointTest {
 
         testRestTemplate.getForObject(url, Movie[].class);
 
-        Mockito.verify(movieStore).getMovies();
+        Mockito.verify(movieStore).getHotMovies();
     }
 }
