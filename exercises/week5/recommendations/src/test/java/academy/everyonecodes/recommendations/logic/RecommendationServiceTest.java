@@ -29,24 +29,26 @@ class RecommendationServiceTest {
     List<Movie> movies = List.of(new Movie("test", "test"));
 
     @Test
-    void recommendTailored() {
+    void getTailored() {
         when(tailoredRecommendationsClient.getMovies(uuid)).thenReturn(movies);
 
         List<Movie> result = recommendationService.recommend(uuid);
 
+        assertEquals(movies, result);
         verify(tailoredRecommendationsClient).getMovies(uuid);
         verify(hotRightNowClient, never()).getHotMovies();
-        assertEquals(movies, result);
 
     }
 
     @Test
     void recommendHot() {
+        when(tailoredRecommendationsClient.getMovies(uuid)).thenReturn(List.of());
         when(hotRightNowClient.getHotMovies()).thenReturn(movies);
 
         List<Movie> result = recommendationService.recommend(uuid);
 
-        verify(hotRightNowClient).getHotMovies();
         assertEquals(movies, result);
+        verify(hotRightNowClient).getHotMovies();
+        verify(tailoredRecommendationsClient).getMovies(uuid);
     }
 }

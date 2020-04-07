@@ -56,7 +56,7 @@ class TailoredRecommendationsStoreTest {
 
     @Test
     @Order(2)
-    void getAll() {
+    void get() {
         List<TailoredRecommendation> result = tailoredRecommendationsStore.getAll();
         List<TailoredRecommendation> expected = List.of(
                 new TailoredRecommendation("1", new Movie("test1", "test1")),
