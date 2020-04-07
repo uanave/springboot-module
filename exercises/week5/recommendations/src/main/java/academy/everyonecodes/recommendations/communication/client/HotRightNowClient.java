@@ -10,18 +10,17 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
-@Order(1)
 public class HotRightNowClient {
     private final RestTemplate restTemplate;
-    private final String urlHot;
+    private final String url;
 
-    public HotRightNowClient(RestTemplate restTemplate, @Value("${hot.url}") String urlHot) {
+    public HotRightNowClient(RestTemplate restTemplate, @Value("${hot.url}") String url) {
         this.restTemplate = restTemplate;
-        this.urlHot = urlHot;
+        this.url = url;
     }
 
     public List<Movie> getHotMovies() {
-        Movie[] hot = restTemplate.getForObject(urlHot, Movie[].class);
+        Movie[] hot = restTemplate.getForObject(url, Movie[].class);
         return List.of(Objects.requireNonNull(hot));
     }
 }

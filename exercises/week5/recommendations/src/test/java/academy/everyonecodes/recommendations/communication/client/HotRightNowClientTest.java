@@ -25,18 +25,18 @@ class HotRightNowClientTest {
     RestTemplate restTemplate;
 
     @Value("${hot.url}")
-    String urlHot;
+    String url;
 
     @Test
     void getHotMovies() {
         List<Movie> expected = List.of(new Movie("test", "test"));
 
-        when(restTemplate.getForObject(urlHot, Movie[].class))
+        when(restTemplate.getForObject(url, Movie[].class))
                 .thenReturn(expected.toArray(Movie[]::new));
 
         List<Movie> result = hotRightNowClient.getHotMovies();
 
-        verify(restTemplate).getForObject(urlHot, Movie[].class);
+        verify(restTemplate).getForObject(url, Movie[].class);
         assertEquals(expected, result);
     }
 }

@@ -25,7 +25,7 @@ class TailoredRecommendationsClientTest {
     RestTemplate restTemplate;
 
     @Value("${tailored.url}")
-    String urlTailored;
+    String url;
 
     @Test
     void getMovies() {
@@ -33,12 +33,12 @@ class TailoredRecommendationsClientTest {
 
         List<Movie> expected = List.of(new Movie("test", "test"));
 
-        Mockito.when(restTemplate.getForObject(urlTailored + "/" + uuid, Movie[].class))
+        Mockito.when(restTemplate.getForObject(url + "/" + uuid, Movie[].class))
                 .thenReturn(expected.toArray(Movie[]::new));
 
         List<Movie> result = client.getMovies(uuid);
 
-        verify(restTemplate).getForObject(urlTailored + "/" + uuid, Movie[].class);
+        verify(restTemplate).getForObject(url + "/" + uuid, Movie[].class);
         assertEquals(expected, result);
     }
 }

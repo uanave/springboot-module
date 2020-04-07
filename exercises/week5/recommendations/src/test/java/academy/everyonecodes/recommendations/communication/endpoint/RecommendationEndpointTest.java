@@ -8,11 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -25,15 +21,12 @@ class RecommendationEndpointTest {
     RecommendationService recommendationService;
 
     String url = "/recommendations";
-    String id = "123";
 
     @Test
     void getMovies() {
-        List<Movie> expected = List.of(new Movie("test", "test"));
-        when(recommendationService.recommend(id)).thenReturn(expected);
-        Movie[] response = testRestTemplate.getForObject(url + "/" + id, Movie[].class);
-        List<Movie> result = List.of(response);
-        assertEquals(expected, result);
+        String id = "123";
+
+        testRestTemplate.getForObject(url + "/" + id, Movie[].class);
         verify(recommendationService).recommend(id);
     }
 }

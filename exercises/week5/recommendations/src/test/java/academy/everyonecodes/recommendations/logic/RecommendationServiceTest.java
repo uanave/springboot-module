@@ -25,34 +25,28 @@ class RecommendationServiceTest {
     @MockBean
     HotRightNowClient hotRightNowClient;
 
+    String uuid = "123";
+    List<Movie> movies = List.of(new Movie("test", "test"));
 
     @Test
     void recommendTailored() {
-        String id = "123";
-        List<Movie> tailored = List.of(new Movie("test", "test"));
-        List<Movie> hot = List.of(new Movie("test1", "test1"));
+        when(tailoredRecommendationsClient.getMovies(uuid)).thenReturn(movies);
 
-        when(hotRightNowClient.getHotMovies()).thenReturn(hot);
-        when(tailoredRecommendationsClient.getMovies(id)).thenReturn(tailored);
+        List<Movie> result = recommendationService.recommend(uuid);
 
-
-        List<Movie> result = recommendationService.recommend(id);
-
-        verify(tailoredRecommendationsClient).getMovies(id);
+        verify(tailoredRecommendationsClient).getMovies(uuid);
         verify(hotRightNowClient, never()).getHotMovies();
-        assertEquals(tailored, result);
+        assertEquals(movies, result);
+
     }
+
     @Test
     void recommendHot() {
-        String id = "123";
-        List<Movie> hot = List.of(new Movie("test1", "test1"));
+        when(hotRightNowClient.getHotMovies()).thenReturn(movies);
 
-        when(hotRightNowClient.getHotMovies()).thenReturn(hot);
-
-
-        List<Movie> result = recommendationService.recommend(id);
+        List<Movie> result = recommendationService.recommend(uuid);
 
         verify(hotRightNowClient).getHotMovies();
-        assertEquals(hot, result);
+        assertEquals(movies, result);
     }
 }
