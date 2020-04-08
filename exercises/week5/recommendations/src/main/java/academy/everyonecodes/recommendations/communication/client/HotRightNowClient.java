@@ -2,7 +2,6 @@ package academy.everyonecodes.recommendations.communication.client;
 
 import academy.everyonecodes.recommendations.domain.Movie;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,7 +13,8 @@ public class HotRightNowClient {
     private final RestTemplate restTemplate;
     private final String url;
 
-    public HotRightNowClient(RestTemplate restTemplate, @Value("${hot.url}") String url) {
+    public HotRightNowClient(RestTemplate restTemplate,
+                             @Value("${hot.url}") String url) {
         this.restTemplate = restTemplate;
         this.url = url;
     }

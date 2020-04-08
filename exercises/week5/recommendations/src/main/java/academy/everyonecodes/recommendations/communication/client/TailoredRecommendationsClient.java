@@ -13,7 +13,8 @@ public class TailoredRecommendationsClient {
     private final RestTemplate restTemplate;
     private final String url;
 
-    public TailoredRecommendationsClient(RestTemplate restTemplate, @Value("${tailored.url}") String url) {
+    public TailoredRecommendationsClient(RestTemplate restTemplate,
+                                         @Value("${tailored.url}") String url) {
         this.restTemplate = restTemplate;
         this.url = url;
     }

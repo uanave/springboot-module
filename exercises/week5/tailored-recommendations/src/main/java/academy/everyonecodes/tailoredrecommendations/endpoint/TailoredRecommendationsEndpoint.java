@@ -12,13 +12,13 @@ import java.util.List;
 @RequestMapping("/tailoredrecommendations")
 public class TailoredRecommendationsEndpoint {
 
-    private TailoredRecommendationsStore tailoredRecommendationsStore;
+    private final TailoredRecommendationsStore tailoredRecommendationsStore;
 
     public TailoredRecommendationsEndpoint(TailoredRecommendationsStore tailoredRecommendationsStore) {
         this.tailoredRecommendationsStore = tailoredRecommendationsStore;
     }
 
-    @PostMapping()
+    @PostMapping
     TailoredRecommendation post(@RequestBody TailoredRecommendation recommendation) {
         return tailoredRecommendationsStore.postOne(recommendation);
     }

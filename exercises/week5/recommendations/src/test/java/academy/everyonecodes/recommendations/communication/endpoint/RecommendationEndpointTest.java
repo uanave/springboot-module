@@ -27,6 +27,7 @@ class RecommendationEndpointTest {
         String id = "123";
 
         testRestTemplate.getForObject(url + "/" + id, Movie[].class);
+
         verify(recommendationService).recommend(id);
     }
 }

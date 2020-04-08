@@ -12,6 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.verify;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -30,6 +31,6 @@ class MovieEndpointTest {
 
         testRestTemplate.getForObject(url, Movie[].class);
 
-        Mockito.verify(movieStore).getHotMovies();
+        verify(movieStore).getHotMovies();
     }
 }
