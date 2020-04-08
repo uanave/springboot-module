@@ -12,6 +12,10 @@ public class FleaMarketService {
 
     private List<Item> items = new ArrayList<>();
 
+    public FleaMarketService(List<Item> items) {
+        this.items = items;
+    }
+
     public void add(Item item) {
         items.add(item);
     }
