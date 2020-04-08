@@ -16,13 +16,13 @@ public class FleaMarketService {
         items.add(item);
     }
 
-    public List<Item> findBy(String name) {
+    public List<Item> findByName(String name) {
         return items.stream()
                 .filter(item -> item.getName().equalsIgnoreCase(name))
                 .collect(toList());
     }
 
-    List<Item> getAll() {
+    public List<Item> getAll() {
         return items;
     }
 }

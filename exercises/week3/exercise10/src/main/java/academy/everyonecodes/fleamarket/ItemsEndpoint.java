@@ -7,7 +7,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/items")
 public class ItemsEndpoint {
-    private FleaMarketService fleaMarketService;
+    private final FleaMarketService fleaMarketService;
 
     public ItemsEndpoint(FleaMarketService fleaMarketService) {
         this.fleaMarketService = fleaMarketService;
@@ -26,6 +26,6 @@ public class ItemsEndpoint {
 
     @GetMapping("/{name}")
     List<Item> getByName(@PathVariable String name) {
-        return fleaMarketService.findBy(name);
+        return fleaMarketService.findByName(name);
     }
 }
