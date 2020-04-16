@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/the-final-countdown
+countdown:
+  start: 3
