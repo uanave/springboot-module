@@ -24,11 +24,4 @@ public class GameResult {
         this.result = result;
     }
 
-    @Override
-    public String toString() {
-        return "GameResult{" +
-                "id='" + id + '\'' +
-                ", result='" + result + '\'' +
-                '}';
-    }
 }

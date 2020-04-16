@@ -67,11 +67,12 @@ class TwitterServiceTest {
     @Test
     void addComment() {
         String comment = "test";
-        when(tweetRepository.findById(id))
-                .thenReturn(Optional.of(tweet));
-        when(tweetRepository.save(tweet))
-                .thenReturn(tweet);
+
+        when(tweetRepository.findById(id)).thenReturn(Optional.of(tweet));
+        when(tweetRepository.save(tweet)).thenReturn(tweet);
+
         twitterService.addComment(id, comment);
+
         assertEquals(1, tweet.getComments().size());
 
         verify(tweetRepository).findById(id);

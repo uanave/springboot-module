@@ -10,4 +10,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost/rock-scissors-paper
-
+results:
+  player1: "Player 1 wins"
+  player2: "Player 2 wins"
+  tie: "It's a tie"

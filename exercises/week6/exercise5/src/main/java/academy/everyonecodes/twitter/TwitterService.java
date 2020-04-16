@@ -14,10 +14,6 @@ public class TwitterService {
         this.tweetRepository = tweetRepository;
     }
 
-    public TweetRepository getTweetRepository() {
-        return tweetRepository;
-    }
-
     List<Tweet> getAllOrdered() {
         return tweetRepository.findAllByOrderByTimestampDesc();
     }
