@@ -7,8 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
@@ -22,6 +21,9 @@ class ToDoManagerTest {
     @MockBean
     ToDoRepository toDoRepository;
 
+    String id = "test";
+    ToDo toDo = new ToDo("test", false);
+
     @Test
     void getAll() {
         toDoManager.getAll();
@@ -30,37 +32,35 @@ class ToDoManagerTest {
 
     @Test
     void findById() {
-        String id = "test";
         toDoManager.findById(id);
         verify(toDoRepository).findById(id);
     }
 
     @Test
     void post() {
-        ToDo toDo = new ToDo("do", false);
+        assertNull(toDo.getId());
         toDoManager.post(toDo);
         verify(toDoRepository).save(toDo);
     }
 
     @Test
     void mark() {
-        String id = "test";
-        when(toDoManager.mark(id)).thenReturn(Optional.of(new ToDo("test", true)));
+        ToDo done = new ToDo("test", true);
+        when(toDoManager.mark(id)).thenReturn(Optional.of(toDo));
+        when(toDoRepository.save(done)).thenReturn(done);
 
         Optional<ToDo> oResult = toDoManager.mark(id);
-        Optional<ToDo> oExpected = Optional.of(new ToDo("test", true));
+        Optional<ToDo> oExpected = Optional.of(done);
 
         assertEquals(oExpected, oResult);
 
         verify(toDoRepository).findById(id);
-        verify(toDoRepository).save(oResult.get());
+        verify(toDoRepository).save(done);
     }
 
     @Test
     void delete() {
-        String id = "test";
         toDoManager.delete(id);
-        verify(toDoRepository).findById(id);
-        assertFalse(toDoRepository.findById(id).isPresent());
+        verify(toDoRepository).deleteById(id);
     }
 }

@@ -34,7 +34,6 @@ public class ToDoManager {
     }
 
     public void delete(String id) {
-        Optional<ToDo> oDelete = findById(id);
-        oDelete.ifPresent(toDo -> toDoRepository.delete(toDo));
+        toDoRepository.deleteById(id);
     }
 }

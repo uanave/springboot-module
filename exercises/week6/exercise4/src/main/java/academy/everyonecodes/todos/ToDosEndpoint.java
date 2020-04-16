@@ -37,5 +37,4 @@ public class ToDosEndpoint {
     void delete(@PathVariable String id) {
         toDoManager.delete(id);
     }
-
 }
