@@ -18,4 +18,8 @@ public class GameResultManager {
         GameResult gameResult = new GameResult(result);
         gameResultRepository.save(gameResult);
     }
+
+    void deleteAll() {
+        gameResultRepository.deleteAll();
+    }
 }

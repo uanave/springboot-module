@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -37,12 +36,12 @@ public class Game {
             playOneRound(player1, player2);
             wantToPlay = askToPlayAgain(player1, player2);
         }
+        gameResultManager.deleteAll();
         System.out.println("Goodbye");
     }
 
     private void playOneRound(Player player1, Player player2) {
         System.out.println(createStatistic());
-
         Move move1 = player1.play();
         Move move2 = player2.play();
         System.out.println("Player 1 chose: " + move1.getName());
@@ -60,7 +59,6 @@ public class Game {
         List<String> results = new ArrayList<>();
         if (player1Wins != 0) {
             results.add("Player 1 wins: " + player1Wins);
-
         }
         if (player2Wins != 0) {
             results.add("Player 2 wins: " + player2Wins);

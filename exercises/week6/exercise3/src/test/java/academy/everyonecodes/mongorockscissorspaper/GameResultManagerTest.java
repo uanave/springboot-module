@@ -45,6 +45,11 @@ class GameResultManagerTest {
         assertNull(gameResult.getId());
 
         verify(gameResultRepository).save(any(GameResult.class));
+    }
 
+    @Test
+    void deleteAll() {
+        gameResultManager.deleteAll();
+        verify(gameResultRepository).deleteAll();
     }
 }
