@@ -44,7 +44,7 @@ class TweetsEndpointTest {
     @Test
     void addLike() {
         String id = "test";
-        testRestTemplate.put(url + "/" + id + "/likes", String.class);
+        testRestTemplate.put(url + "/" + id + "/likes", null);
         verify(twitterService).addLike(id);
     }
 

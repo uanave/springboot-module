@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -47,7 +48,7 @@ class TwitterServiceTest {
     void postOne() {
         when(twitterService.postOne(tweet)).thenReturn(tweet);
         Tweet result = twitterService.postOne(tweet);
-        Assertions.assertNotNull(result.getTimestamp());
+        assertNotNull(result.getTimestamp());
         verify(tweetRepository).save(any(Tweet.class));
     }
 
