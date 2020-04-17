@@ -1,5 +1,6 @@
 package academy.everyomecodes.drhousediagnoses.logic;
 
+import academy.everyomecodes.drhousediagnoses.client.TreatmentsClient;
 import academy.everyomecodes.drhousediagnoses.domain.Patient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ class DiagnosisRoomTest {
     @MockBean
     DrHouse drHouse;
 
+    @MockBean
+    TreatmentsClient treatmentsClient;
+
     @Test
     void diagnose() {
         Patient patient = new Patient("3bc716e1-9c68-4c42-bc89-62b4e9c67f69", "Lisa", "fatigue, appear pale");
@@ -25,5 +29,7 @@ class DiagnosisRoomTest {
         diagnosisRoom.diagnose(patient);
 
         verify(drHouse).diagnose(patient);
+
+        verify(treatmentsClient).send(patient);
     }
 }

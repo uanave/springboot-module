@@ -1,19 +1,22 @@
 package academy.everyomecodes.drhousediagnoses.logic;
 
+import academy.everyomecodes.drhousediagnoses.client.TreatmentsClient;
 import academy.everyomecodes.drhousediagnoses.domain.Patient;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DiagnosisRoom {
     private final DrHouse drHouse;
+    private final TreatmentsClient treatmentsClient;
 
-    public DiagnosisRoom(DrHouse drHouse) {
+    public DiagnosisRoom(DrHouse drHouse, TreatmentsClient treatmentsClient) {
         this.drHouse = drHouse;
+        this.treatmentsClient = treatmentsClient;
     }
 
     public Patient diagnose(Patient patient) {
         drHouse.diagnose(patient);
-        System.out.println("Patient with the symptoms: " + patient.getSymptoms() + "; diagnosed with: " + patient.getDiagnosis());
+        treatmentsClient.send(patient);
         return patient;
     }
 
