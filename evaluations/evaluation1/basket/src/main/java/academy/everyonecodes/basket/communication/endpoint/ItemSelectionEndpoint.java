@@ -22,7 +22,7 @@ public class ItemSelectionEndpoint {
 
     @PostMapping
     ItemSelection post(@RequestBody ItemSelection itemSelection) {
-        Summary summary = summaryCalculator.calculateSummary(itemSelection);
+        Summary summary = summaryCalculator.calculate(itemSelection);
         basket.add(summary);
         return itemSelection;
     }

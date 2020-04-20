@@ -2,3 +2,5 @@ server:
   port: 9000
 clients:
   url: http://localhost:9001/users
+basket:
+  deliverycosts: 2.5

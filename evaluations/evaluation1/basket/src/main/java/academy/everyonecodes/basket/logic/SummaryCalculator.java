@@ -4,6 +4,7 @@ import academy.everyonecodes.basket.communication.client.UsersClient;
 import academy.everyonecodes.basket.domain.ItemSelection;
 import academy.everyonecodes.basket.domain.Summary;
 import academy.everyonecodes.basket.domain.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,31 +13,43 @@ import java.util.Optional;
 public class SummaryCalculator {
 
     private final UsersClient usersClient;
+    private final double deliveryCosts;
 
-    public SummaryCalculator(UsersClient usersClient) {
+    public SummaryCalculator(UsersClient usersClient,
+                             @Value("${basket.deliverycosts}") double deliveryCosts) {
         this.usersClient = usersClient;
+        this.deliveryCosts = deliveryCosts;
     }
 
-    public Summary calculateSummary(ItemSelection itemSelection) {
-        double deliveryCost = getDeliveryCost(itemSelection);
-        return getSummary(itemSelection, deliveryCost);
-    }
 
-    double getDeliveryCost(ItemSelection itemSelection) {
-        String email = itemSelection.getUserEmail();
-        Optional<User> user = usersClient.get(email);
-        double deliveryCost = 0.0;
-        if (user.isEmpty() || !user.get().getAccountType().equals("premium account")) {
-            deliveryCost = 2.5;
+    public Summary calculate(ItemSelection itemSelection) {
+        Optional<User> oUser = usersClient.get(itemSelection.getUserEmail());
+        Summary summary = createStandardSummary(itemSelection);
+        if (hasPremiumAccount(oUser)) {
+            removeDeliveryCosts(summary);
         }
-        return deliveryCost;
+        return summary;
     }
 
-    Summary getSummary(ItemSelection itemSelection, double deliveryCost) {
-        String email = itemSelection.getUserEmail();
-        String itemName = itemSelection.getItemName();
-        double itemPrice = itemSelection.getItemPrice();
-        double totalPrice = itemPrice + deliveryCost;
-        return new Summary(email, itemName, itemPrice, deliveryCost, totalPrice);
+    private Summary createStandardSummary(ItemSelection itemSelection) {
+        double totalPrice = itemSelection.getItemPrice() + deliveryCosts;
+        return new Summary(
+                itemSelection.getUserEmail(),
+                itemSelection.getItemName(),
+                itemSelection.getItemPrice(),
+                deliveryCosts,
+                totalPrice
+        );
+    }
+
+    private boolean hasPremiumAccount(Optional<User> oUser) {
+        String account = oUser.map(User::getAccountType).orElse("no account");
+        return account.equals("premium");
+    }
+
+    private void removeDeliveryCosts(Summary summary) {
+        double itemPrice = summary.getItemPrice();
+        summary.setDeliveryCost(0);
+        summary.setTotalPrice(itemPrice);
     }
 }

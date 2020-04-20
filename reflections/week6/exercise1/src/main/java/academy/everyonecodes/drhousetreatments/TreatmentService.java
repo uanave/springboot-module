@@ -7,18 +7,14 @@ import java.util.List;
 @Service
 public class TreatmentService {
     private final TreatmentRepository treatmentRepository;
-    private final Nurse nurse;
 
-    public TreatmentService(TreatmentRepository treatmentRepository, Nurse nurse) {
+    public TreatmentService(TreatmentRepository treatmentRepository) {
         this.treatmentRepository = treatmentRepository;
-        this.nurse = nurse;
     }
 
-    public Patient save(Patient patient) {
-        nurse.provideTreatment(patient);
+    public void save(Patient patient) {
         Treatment databaseTreatment = createTreatment(patient);
         treatmentRepository.save(databaseTreatment);
-        return patient;
     }
 
     public List<Treatment> findAll() {

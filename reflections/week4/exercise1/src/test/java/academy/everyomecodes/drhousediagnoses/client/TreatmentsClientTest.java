@@ -26,7 +26,7 @@ class TreatmentsClientTest {
 
     @Test
     void send() throws JsonProcessingException {
-        Patient patient = new Patient();
+        Patient patient = new Patient("uuid", "name", "symptoms", "diagnosis");
 
         treatmentsClient.send(patient);
 

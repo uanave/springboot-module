@@ -9,6 +9,13 @@ public class Patient {
     private String diagnosis;
     private String treatment;
 
+    public Patient(String uuid, String name, String symptoms, String diagnosis) {
+        this.uuid = uuid;
+        this.name = name;
+        this.symptoms = symptoms;
+        this.diagnosis = diagnosis;
+    }
+
     public Patient(String uuid, String name, String symptoms, String diagnosis, String treatment) {
         this.uuid = uuid;
         this.name = name;

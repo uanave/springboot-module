@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/patients")
 public class PatientEndpoint {
-    private final TreatmentService treatmentService;
+    private final Nurse nurse;
 
-    public PatientEndpoint(TreatmentService treatmentService) {
-        this.treatmentService = treatmentService;
+    public PatientEndpoint(Nurse nurse) {
+        this.nurse = nurse;
     }
 
     @PostMapping
     Patient post(@RequestBody Patient patient) {
-        return treatmentService.save(patient);
+        nurse.provideTreatment(patient);
+        return patient;
     }
 }

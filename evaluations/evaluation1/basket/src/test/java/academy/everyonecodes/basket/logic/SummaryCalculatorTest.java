@@ -4,15 +4,17 @@ import academy.everyonecodes.basket.communication.client.UsersClient;
 import academy.everyonecodes.basket.domain.ItemSelection;
 import academy.everyonecodes.basket.domain.Summary;
 import academy.everyonecodes.basket.domain.User;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
@@ -25,40 +27,35 @@ class SummaryCalculatorTest {
     @MockBean
     UsersClient usersClient;
 
-    ItemSelection itemSelection = new ItemSelection("test", "test", 3.0);
-    String email = itemSelection.getUserEmail();
-
-
-    @Test
-    void calculateSummary() {
-        when(usersClient.get(email)).thenReturn(Optional.of(new User("test", "standard account")));
-
-        Summary result = summaryCalculator.calculateSummary(itemSelection);
-
-        Summary expected = new Summary("test", "test", 3.0, 2.5, 5.5);
-
-        assertEquals(expected, result);
-        verify(usersClient).get(email);
+    static Stream<Arguments> parameters() {
+        return Stream.of(
+                Arguments.of(
+                        new Summary("unknown@test.com", "test", 1.0, 2, 1 + 2),
+                        Optional.empty(),
+                        new ItemSelection("unknown@test.com", "test", 1.0)
+                ),
+                Arguments.of(
+                        new Summary("standard@test.com", "test", 1.0, 2, 1 + 2),
+                        Optional.of(new User("standard@test.com", "standard")),
+                        new ItemSelection("standard@test.com", "test", 1.0)
+                ),
+                Arguments.of(
+                        new Summary("premium@test.com", "test", 1.0, 0, 1),
+                        Optional.of(new User("premium@test.com", "premium")),
+                        new ItemSelection("premium@test.com", "test", 1.0)
+                )
+        );
     }
 
-    @Test
-    void getDeliveryCost() {
-        when(usersClient.get(email)).thenReturn(Optional.of(new User("test", "premium account")));
+    @ParameterizedTest
+    @MethodSource("parameters")
+    void calculate(Summary expected, Optional<User> oUser, ItemSelection itemSelection) {
+        when(usersClient.get(itemSelection.getUserEmail()))
+                .thenReturn(oUser);
 
-        ItemSelection itemSelection = new ItemSelection("test", "test", 3.0);
-        double result = summaryCalculator.getDeliveryCost(itemSelection);
-        double expected = 0.0;
+        Summary result = summaryCalculator.calculate(itemSelection);
 
         assertEquals(expected, result);
-        verify(usersClient).get(email);
     }
 
-    @Test
-    void getSummary() {
-        double deliveryCost = 2.5;
-
-        Summary result = summaryCalculator.getSummary(itemSelection, deliveryCost);
-        Summary expected = new Summary("test", "test", 3.0, 2.5, 5.5);
-        assertEquals(expected, result);
-    }
 }

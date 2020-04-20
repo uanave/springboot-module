@@ -17,7 +17,7 @@ public class TreatmentEndpoint {
     }
 
     @GetMapping
-    List<Treatment> findAll() {
+    List<Treatment> get() {
         return treatmentService.findAll();
     }
 

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
@@ -18,20 +17,16 @@ class TreatmentServiceTest {
     @MockBean
     TreatmentRepository treatmentRepository;
 
-    @MockBean
-    Nurse nurse;
-
-    Patient patient = new Patient();
+    Patient patient = new Patient("uuid", "name", "symptoms", "diagnosis", "treatment");
 
     @Test
     void save() {
-        nurse.provideTreatment(patient);
-
         treatmentService.save(patient);
 
-        verify(nurse).provideTreatment(patient);
-        verify(treatmentRepository).save(any(Treatment.class));
+        Treatment treatment =
+                new Treatment("uuid", "name", "symptoms", "diagnosis", "treatment");
 
+        verify(treatmentRepository).save(treatment);
     }
 
     @Test

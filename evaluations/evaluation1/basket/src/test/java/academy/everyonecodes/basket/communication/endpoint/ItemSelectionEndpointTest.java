@@ -33,11 +33,11 @@ class ItemSelectionEndpointTest {
         ItemSelection itemSelection = new ItemSelection("test", "test", 3.0);
         Summary summary = new Summary("test", "test", 3.0, 0.0, 3.0);
 
-        when(summaryCalculator.calculateSummary(itemSelection)).thenReturn(summary);
+        when(summaryCalculator.calculate(itemSelection)).thenReturn(summary);
 
         testRestTemplate.postForObject(url, itemSelection, User.class);
 
-        verify(summaryCalculator).calculateSummary(itemSelection);
+        verify(summaryCalculator).calculate(itemSelection);
 
         verify(basket).add(summary);
     }
