@@ -52,6 +52,5 @@ class PersonEndpointTest {
         testRestTemplate.put(url + "/" + id1 + "/unfriend/" + id2, id1, id2);
 
         verify(personService).unfriend(id1, id2);
-
     }
 }
