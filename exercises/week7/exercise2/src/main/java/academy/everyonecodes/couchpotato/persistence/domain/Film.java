@@ -1,8 +1,7 @@
 package academy.everyonecodes.couchpotato.persistence.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
@@ -11,10 +10,15 @@ public class Film {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotBlank
     private String name;
+
+    @Min(1)
+    @Max(5)
     private int rating;
 
-    public Film(String name, int rating) {
+    public Film(@NotBlank @NotEmpty String name, @Min(1) @Max(5) int rating) {
         this.name = name;
         this.rating = rating;
     }
@@ -47,15 +51,6 @@ public class Film {
     }
 
     @Override
-    public String toString() {
-        return "Film{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", rating=" + rating +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -68,5 +63,14 @@ public class Film {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, rating);
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", rating=" + rating +
+                '}';
     }
 }

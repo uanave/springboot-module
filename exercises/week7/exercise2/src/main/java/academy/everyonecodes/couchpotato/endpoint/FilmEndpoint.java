@@ -4,6 +4,7 @@ import academy.everyonecodes.couchpotato.logic.FilmService;
 import academy.everyonecodes.couchpotato.persistence.domain.Film;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class FilmEndpoint {
     }
 
     @PostMapping
-    Film saveOne(@RequestBody Film film) {
+    Film saveOne(@Valid @RequestBody Film film) {
         return filmService.save(film);
     }
 }
