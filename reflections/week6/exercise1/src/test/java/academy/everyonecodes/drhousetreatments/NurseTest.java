@@ -31,6 +31,5 @@ class NurseTest {
         assertNotNull(patient.getTreatment());
         assertEquals(expected, patient.getTreatment());
         verify(treatmentService).save(patient);
-
     }
 }

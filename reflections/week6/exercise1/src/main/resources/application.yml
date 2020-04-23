@@ -5,3 +5,5 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost/drhouse-treatments
+patient:
+  treatment: spend one day in the hospital bed
