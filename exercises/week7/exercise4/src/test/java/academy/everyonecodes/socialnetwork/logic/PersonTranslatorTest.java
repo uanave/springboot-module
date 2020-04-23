@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +17,7 @@ class PersonTranslatorTest {
     void convertToPerson() {
         PersonDTO personDTO = new PersonDTO("Tim");
         Person result = personTranslator.convertToPerson(personDTO);
-        Person expected = new Person("Tim", List.of());
+        Person expected = new Person("Tim", Set.of());
         Assertions.assertEquals(expected, result);
     }
 

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -21,7 +22,7 @@ class PersonServiceTest {
     @MockBean
     PersonRepository personRepository;
 
-    @MockBean
+    @SpyBean
     PersonTranslator personTranslator;
 
     PersonDTO personDTO = new PersonDTO("Tom");
@@ -32,7 +33,6 @@ class PersonServiceTest {
 
     @Test
     void save() {
-        when(personTranslator.convertToPerson(personDTO)).thenReturn(person);
         personService.save(personDTO);
 
         verify(personRepository).save(person);

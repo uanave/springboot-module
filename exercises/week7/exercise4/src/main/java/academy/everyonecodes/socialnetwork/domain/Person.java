@@ -1,12 +1,8 @@
 package academy.everyonecodes.socialnetwork.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -17,12 +13,21 @@ public class Person {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
 
-    @ManyToMany
-    private List<Person> friends = new ArrayList<>();
+    @JoinTable(name = "person_friends",
+            joinColumns = {
+                    @JoinColumn(name = "person_id", referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "friend_id", referencedColumnName = "id")},
+            uniqueConstraints = @UniqueConstraint(columnNames = {
+                    "person_id", "friend_id"}))
 
-    public Person(String name, List<Person> friends) {
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Person> friends = new HashSet<>();
+
+    public Person(String name, Set<Person> friends) {
         this.name = name;
         this.friends = friends;
     }
@@ -50,11 +55,11 @@ public class Person {
         this.name = name;
     }
 
-    public List<Person> getFriends() {
+    public Set<Person> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<Person> friends) {
+    public void setFriends(Set<Person> friends) {
         this.friends = friends;
     }
 

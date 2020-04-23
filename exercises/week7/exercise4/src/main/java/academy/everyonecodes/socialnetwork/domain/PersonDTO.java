@@ -1,9 +1,7 @@
 package academy.everyonecodes.socialnetwork.domain;
 
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class PersonDTO {
 
@@ -11,9 +9,9 @@ public class PersonDTO {
 
     @NotBlank
     private String name;
-    private List<String> friendNames = new ArrayList<>();
+    private Set<String> friendNames = new HashSet<>();
 
-    public PersonDTO(Long id, @NotBlank String name, List<String> friendNames) {
+    public PersonDTO(Long id, @NotBlank String name, Set<String> friendNames) {
         this.id = id;
         this.name = name;
         this.friendNames = friendNames;
@@ -42,11 +40,11 @@ public class PersonDTO {
         this.name = name;
     }
 
-    public List<String> getFriendNames() {
+    public Set<String> getFriendNames() {
         return friendNames;
     }
 
-    public void setFriendNames(List<String> friendNames) {
+    public void setFriendNames(Set<String> friendNames) {
         this.friendNames = friendNames;
     }
 
