@@ -22,12 +22,15 @@ public class PersonService {
     public void friend(Long id1, Long id2) {
         Optional<Person> oPerson1 = personRepository.findById(id1);
         Optional<Person> oPerson2 = personRepository.findById(id2);
-        if (oPerson1.isPresent() && oPerson2.isPresent() && (!id1.equals(id2))) {
-            Set<Person> friends1 = oPerson1.get().getFriends();
-            oPerson2.ifPresent(friends1::add);
-            Set<Person> friends2 = oPerson2.get().getFriends();
-            oPerson1.ifPresent(friends2::add);
+        if (oPerson1.isEmpty() || oPerson2.isEmpty()) {
+            return;
         }
+
+        Set<Person> friends1 = oPerson1.get().getFriends();
+        oPerson2.ifPresent(friends1::add);
+        Set<Person> friends2 = oPerson2.get().getFriends();
+        oPerson1.ifPresent(friends2::add);
+
         oPerson1.ifPresent(personRepository::save);
         oPerson2.ifPresent(personRepository::save);
 
@@ -48,12 +51,14 @@ public class PersonService {
     public void unfriend(Long id1, Long id2) {
         Optional<Person> oPerson1 = personRepository.findById(id1);
         Optional<Person> oPerson2 = personRepository.findById(id2);
-        if (oPerson1.isPresent() && oPerson2.isPresent() && (!id1.equals(id2))) {
-            Set<Person> friends1 = oPerson1.get().getFriends();
-            oPerson2.ifPresent(friends1::remove);
-            Set<Person> friends2 = oPerson2.get().getFriends();
-            oPerson1.ifPresent(friends2::remove);
+        if (oPerson1.isEmpty() || oPerson2.isEmpty()) {
+            return;
         }
+        Set<Person> friends1 = oPerson1.get().getFriends();
+        oPerson2.ifPresent(friends1::remove);
+        Set<Person> friends2 = oPerson2.get().getFriends();
+        oPerson1.ifPresent(friends2::remove);
+
         oPerson1.ifPresent(personRepository::save);
         oPerson2.ifPresent(personRepository::save);
     }

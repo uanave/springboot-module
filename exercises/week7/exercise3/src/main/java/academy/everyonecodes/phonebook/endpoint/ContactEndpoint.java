@@ -4,6 +4,7 @@ import academy.everyonecodes.phonebook.logic.ContactService;
 import academy.everyonecodes.phonebook.persistence.domain.Contact;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class ContactEndpoint {
     }
 
     @PostMapping
-    Contact save(@RequestBody Contact contact) {
+    Contact save(@Valid @RequestBody Contact contact) {
         return contactService.post(contact);
     }
 

@@ -17,7 +17,7 @@ public class Address {
     @NotBlank
     private String street;
 
-    @Max(10000)
+    @Max(9999)
     private String postalCode;
 
     public Address(@NotBlank String street, @Max(10000) String postalCode) {

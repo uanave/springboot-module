@@ -32,9 +32,23 @@ public class Person {
         this.friends = friends;
     }
 
+    public Person(Long id, @NotBlank String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Person(Long id, @NotBlank String name, Set<Person> friends) {
+        this.id = id;
+        this.name = name;
+        this.friends = friends;
+    }
+
+
+
     public Person(String name) {
         this.name = name;
     }
+
 
     public Person() {
     }

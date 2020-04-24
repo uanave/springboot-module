@@ -20,7 +20,7 @@ public class PersonEndpoint {
     }
 
     @PostMapping
-    PersonDTO post(@RequestBody PersonDTO personDTO) {
+    PersonDTO post(@Valid @RequestBody PersonDTO personDTO) {
         return personService.save(personDTO);
     }
 

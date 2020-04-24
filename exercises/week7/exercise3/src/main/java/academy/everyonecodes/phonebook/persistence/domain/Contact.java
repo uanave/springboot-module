@@ -1,6 +1,7 @@
 package academy.everyonecodes.phonebook.persistence.domain;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class Contact {
     @GeneratedValue
     private Long id;
 
+    @Valid
     @NotBlank
     private String name;
 
