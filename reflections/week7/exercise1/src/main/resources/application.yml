@@ -1,0 +1,14 @@
+server:
+  port: 9004
+
+treatment:
+  cost: 90.0
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/drhouse-accountancy?useSSL=false
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
