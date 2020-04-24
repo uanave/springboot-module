@@ -1,5 +1,6 @@
 package academy.everyonecodes.drhousetreatments;
 
+import academy.everyonecodes.drhousetreatments.client.AccountancyClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,9 @@ class NurseTest {
     @MockBean
     TreatmentService treatmentService;
 
+    @MockBean
+    AccountancyClient accountancyClient;
+
     @Test
     void provideTreatment() {
         Patient patient = new Patient("uuid", "name", "symptoms", "diagnosis");
@@ -31,5 +35,6 @@ class NurseTest {
         assertNotNull(patient.getTreatment());
         assertEquals(expected, patient.getTreatment());
         verify(treatmentService).save(patient);
+        verify(accountancyClient).send(patient);
     }
 }

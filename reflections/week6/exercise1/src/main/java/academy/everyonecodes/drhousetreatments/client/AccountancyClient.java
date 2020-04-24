@@ -10,7 +10,7 @@ public class AccountancyClient {
     private final RestTemplate restTemplate;
     private final String url;
 
-    public AccountancyClient(RestTemplate restTemplate, @Value("${accountancy.utl}") String url) {
+    public AccountancyClient(RestTemplate restTemplate, @Value("${accountancy.url}") String url) {
         this.restTemplate = restTemplate;
         this.url = url;
     }

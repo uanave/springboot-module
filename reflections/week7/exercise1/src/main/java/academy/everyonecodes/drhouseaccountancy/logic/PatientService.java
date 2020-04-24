@@ -26,13 +26,12 @@ public class PatientService {
 
     public PatientDTO post(PatientDTO patientDTO) {
         Patient patient = patientTranslator.translateToPatient(patientDTO);
-        Optional<Patient> oPatient = patientRepository.findByUuid(patient.getUuid());
+        Optional<Patient> oPatient = patientRepository.findOneByUuid(patient.getUuid());
         if (oPatient.isEmpty()) {
             patientRepository.save(patient);
         } else {
             patient = oPatient.get();
         }
-        System.out.println(patient);
         Invoice invoice = accountant.generateInvoice(patient);
         invoiceRepository.save(invoice);
         return patientDTO;
