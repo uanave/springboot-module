@@ -19,6 +19,18 @@ public class PersonService {
         this.personTranslator = personTranslator;
     }
 
+    public PersonDTO save(PersonDTO personDTO) {
+        Person person = personTranslator.convertToPerson(personDTO);
+        personRepository.save(person);
+        return personTranslator.convertToPersonDTO(person);
+    }
+
+    public Set<PersonDTO> findAll() {
+        return personRepository.findAll().stream()
+                .map(personTranslator::convertToPersonDTO)
+                .collect(Collectors.toSet());
+    }
+
     public void friend(Long id1, Long id2) {
         Optional<Person> oPerson1 = personRepository.findById(id1);
         Optional<Person> oPerson2 = personRepository.findById(id2);
@@ -34,18 +46,6 @@ public class PersonService {
         oPerson1.ifPresent(personRepository::save);
         oPerson2.ifPresent(personRepository::save);
 
-    }
-
-    public PersonDTO save(PersonDTO personDTO) {
-        Person person = personTranslator.convertToPerson(personDTO);
-        personRepository.save(person);
-        return personTranslator.convertToPersonDTO(person);
-    }
-
-    public Set<PersonDTO> findAll() {
-        return personRepository.findAll().stream()
-                .map(personTranslator::convertToPersonDTO)
-                .collect(Collectors.toSet());
     }
 
     public void unfriend(Long id1, Long id2) {
