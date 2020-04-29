@@ -1,0 +1,9 @@
+spring:
+  security:
+    user:
+      name: marcopolo
+      password: marcopolo
+
+server:
+  port: 9001
+

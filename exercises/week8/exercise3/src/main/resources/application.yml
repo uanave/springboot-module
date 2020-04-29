@@ -1,0 +1,10 @@
+server:
+  port: 9000
+messages:
+  general: "Online Language School"
+  available: "Our available languages are German and English"
+  german: "Willkommen"
+  english: "Welcome"
+interactions:
+  amount: 100
+  delay: 5000

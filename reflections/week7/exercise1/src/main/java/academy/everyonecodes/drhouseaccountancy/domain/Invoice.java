@@ -13,7 +13,7 @@ public class Invoice {
     private double cost;
     private boolean paid;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Patient patient;
 
     public Invoice(double cost, boolean paid, Patient patient) {
