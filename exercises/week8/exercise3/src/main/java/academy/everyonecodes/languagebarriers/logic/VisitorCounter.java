@@ -9,6 +9,10 @@ public class VisitorCounter {
     public VisitorCounter() {
     }
 
+    public VisitorCounter(int count) {
+        this.count = count;
+    }
+
     public int getCount() {
         return count;
     }
