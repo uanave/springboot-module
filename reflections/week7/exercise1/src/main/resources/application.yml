@@ -12,3 +12,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+accountancy:
+  accountants:
+    - username: walter
+      password: secret321
+      authorities: ROLE_ACCOUNTANT
+    - username: julia
+      password: secret123
+      authorities: ROLE_ACCOUNTANT
