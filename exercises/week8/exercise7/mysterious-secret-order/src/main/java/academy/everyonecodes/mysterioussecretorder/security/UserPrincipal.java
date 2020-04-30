@@ -10,26 +10,26 @@ import java.util.Set;
 
 public class UserPrincipal implements UserDetails {
 
-    private final Member user;
+    private final Member member;
 
-    public UserPrincipal(Member user) {
-        this.user = user;
+    public UserPrincipal(Member member) {
+        this.member = member;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<String> authorities = user.getAuthorities();
+        Set<String> authorities = member.getAuthorities();
         return AuthorityUtils.createAuthorityList(authorities.toArray(new String[authorities.size()]));
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return member.getUsername();
     }
 
     @Override
