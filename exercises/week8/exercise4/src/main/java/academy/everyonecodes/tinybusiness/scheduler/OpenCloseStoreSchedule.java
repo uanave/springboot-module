@@ -1,4 +1,4 @@
-package academy.everyonecodes.tinybusiness.schedule;
+package academy.everyonecodes.tinybusiness.scheduler;
 
 import academy.everyonecodes.tinybusiness.logic.ShopService;
 import org.springframework.context.annotation.Configuration;
@@ -13,19 +13,18 @@ import java.time.LocalTime;
 public class OpenCloseStoreSchedule {
     private final ShopService shopService;
 
-
     public OpenCloseStoreSchedule(ShopService shopService) {
         this.shopService = shopService;
     }
 
-    @Scheduled(cron = "0 0 9 ? * MON-FRI")
+    @Scheduled(cron = "${tiny-business.scheduling.opening}")
     public void openStore() {
         shopService.open();
         System.out.println(
                 "The store is open! - " + LocalDateTime.now());
     }
 
-    @Scheduled(cron = "0 0 17 ? * MON-FRI")
+    @Scheduled(cron = "${tiny-business.scheduling.closing}")
     public void closeStore() {
         shopService.close();
         long now = System.currentTimeMillis() / 1000;

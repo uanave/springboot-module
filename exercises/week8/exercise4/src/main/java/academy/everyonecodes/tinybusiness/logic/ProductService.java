@@ -10,9 +10,11 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
+    private final ShopService shopService;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ShopService shopService) {
         this.productRepository = productRepository;
+        this.shopService = shopService;
     }
 
     public Product post(Product product) {
@@ -21,11 +23,17 @@ public class ProductService {
     }
 
     public List<Product> getAllPremium() {
-        return productRepository.findByIsPremium(true);
+        if (shopService.isOpen()) {
+            return productRepository.findByIsPremium(true);
+        }
+        return getEmpty();
     }
 
     public List<Product> getNonPremium() {
-        return productRepository.findByIsPremium(false);
+        if (!shopService.isOpen()) {
+            return productRepository.findByIsPremium(false);
+        }
+        return getEmpty();
     }
 
     public List<Product> getEmpty() {

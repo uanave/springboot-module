@@ -5,3 +5,18 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost/small-business
+
+tiny-business:
+  tinyBusinessUsers:
+    - username: owner
+      password: owner
+      authorities: ROLE_OWNER
+    - username: premium
+      password: premium
+      authorities: ROLE_PREMIUM
+  open: "Shop is now open!"
+  close: "Shop is now closed!"
+
+  scheduling:
+    opening: "0 0 9 * * MON-FRI"
+    closing: "0 0 17 * * MON-FRI"
