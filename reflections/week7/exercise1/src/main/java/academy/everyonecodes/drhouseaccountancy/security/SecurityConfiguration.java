@@ -58,6 +58,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorities(accountancyUser.getAuthorities())
                 .build();
     }
-
 }
 
