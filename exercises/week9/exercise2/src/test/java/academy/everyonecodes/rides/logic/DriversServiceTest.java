@@ -28,6 +28,8 @@ class DriversServiceTest {
     @MockBean
     RideRepository rideRepository;
     Driver driver = new Driver("tom", "combi");
+    Long id = 1L;
+    Ride ride = new Ride("tom", "16.8 km", 18.9);
 
 
     @Test
@@ -44,8 +46,6 @@ class DriversServiceTest {
 
     @Test
     void saveRideAddToDriver() {
-        Long id = 1L;
-        Ride ride = new Ride("tom", "16.8 km", 18.9);
         when(rideRepository.save(ride)).thenReturn(ride);
         when(driverRepository.findById(id)).thenReturn(Optional.of(driver));
         assertTrue(driver.getRides().isEmpty());
@@ -58,8 +58,6 @@ class DriversServiceTest {
 
     @Test
     void doesNotFindDriver() {
-        Long id = 1L;
-        Ride ride = new Ride("tom", "16.8 km", 18.9);
         when(driverRepository.findById(id)).thenReturn(Optional.empty());
         driversService.saveRideAddToDriver(id, ride);
         verify(driverRepository).findById(id);

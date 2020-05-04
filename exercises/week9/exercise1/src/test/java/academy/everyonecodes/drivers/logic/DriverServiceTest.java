@@ -15,8 +15,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @SpringBootTest(webEnvironment = NONE)
@@ -41,8 +40,10 @@ class DriverServiceTest {
 
     @Test
     void saveNonExistingDriver() {
-        when(driverRepository.findOneByUsername(driver.getUsername())).thenReturn(Optional.empty());
-        when(passwordEncoder.encode(driver.getPassword())).thenReturn("encrypted");
+        when(driverRepository.findOneByUsername(driver.getUsername()))
+                .thenReturn(Optional.empty());
+        when(passwordEncoder.encode(driver.getPassword()))
+                .thenReturn("encrypted");
 
         assertTrue(driver.getAuthorities().isEmpty());
 
@@ -50,12 +51,28 @@ class DriverServiceTest {
 
         assertTrue(driver.getAuthorities().contains(authority));
         assertEquals(1, driver.getAuthorities().size());
-
+        Driver expected = new Driver("test", "encrypted", "test", Set.of(authority), false);
 
 
         verify(driverRepository).findOneByUsername(driver.getUsername());
-        Driver expected = new Driver("test", "encrypted", "test", Set.of(authority), false);
+
+
         verify(driverRepository).save(expected);
+    }
+
+    @Test
+    void existingDriver() {
+        Driver expected = new Driver("test", "encrypted", "test", Set.of(authority), false);
+
+        when(driverRepository.findOneByUsername(driver.getUsername()))
+                .thenReturn(Optional.of(expected));
+
+        driverService.save(driver);
+
+        verify(driverRepository).findOneByUsername(driver.getUsername());
+        verifyNoInteractions(passwordEncoder);
+        verifyNoMoreInteractions(driverRepository);
+
     }
 
     @Test
