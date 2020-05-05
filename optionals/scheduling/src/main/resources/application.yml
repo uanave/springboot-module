@@ -1,0 +1,4 @@
+printing-service:
+  fixedDelay: 5000
+  fixedRate: 2000
+  cron: "30 2 9-18 * * MON-FRI"
