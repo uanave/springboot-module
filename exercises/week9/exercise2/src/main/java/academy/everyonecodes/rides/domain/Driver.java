@@ -25,6 +25,12 @@ public class Driver {
         this.carType = carType;
     }
 
+    public Driver(String username, String carType, Set<Ride> rides) {
+        this.username = username;
+        this.carType = carType;
+        this.rides = rides;
+    }
+
     public Long getId() {
         return id;
     }

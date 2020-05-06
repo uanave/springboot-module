@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -46,14 +48,16 @@ class DriversServiceTest {
 
     @Test
     void saveRideAddToDriver() {
-        when(rideRepository.save(ride)).thenReturn(ride);
+        long id = 12L;
+        Driver driver = new Driver("username", "car", new HashSet<>());
         when(driverRepository.findById(id)).thenReturn(Optional.of(driver));
-        assertTrue(driver.getRides().isEmpty());
 
         driversService.saveRideAddToDriver(id, ride);
-        assertEquals(1, driver.getRides().size());
-        verify(driverRepository).save(driver);
+
+        verify(driverRepository).findById(id);
         verify(rideRepository).save(ride);
+        Driver expected = new Driver("username", "car", Set.of(ride));
+        verify(driverRepository).save(expected);
     }
 
     @Test
