@@ -30,11 +30,13 @@ public class DriversService {
 
     public Ride saveRideAddToDriver(Long id, Ride ride) {
         Optional<Driver> oDriver = driverRepository.findById(id);
-        if (oDriver.isPresent()) {
-            oDriver.get().getRides().add(ride);
-            driverRepository.save(oDriver.get());
-            rideRepository.save(ride);
+        if (oDriver.isEmpty()) {
+            return ride;
         }
+        rideRepository.save(ride);
+        Driver driver = oDriver.get();
+        driver.getRides().add(ride);
+        driverRepository.save(driver);
         return ride;
     }
 }
