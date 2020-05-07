@@ -1,0 +1,16 @@
+server:
+  port: 9001
+users:
+  users:
+    - name: Lisa
+      email: lisa@email.com
+      accountType: standard account
+    - name: Rodolfo
+      email: rodolfo@email.com
+      accountType: standard account
+    - name: Samuel
+      email: samuel@email.com
+      accountType: premium account
+    - name: Rose
+      email: rose@email.com
+      accountType: premium account
